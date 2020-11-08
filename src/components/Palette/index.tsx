@@ -1,28 +1,16 @@
 import React from 'react';
 
 import { ColourBox } from '../ColourBox';
+import { IGeneratePalette, IPalette } from '../../types';
 import './index.css';
 
 //1. navbar
 //2. palette colours
 
-interface IPaletteProps {
-  colours: {
-    paletteName: string;
-    id: string;
-    emoji: string;
-    colors: {
-      name: string;
-      color: string;
-    }[];
-  }
-};
-
-export const Palette = ({ colours }: IPaletteProps) => {
-  const renderColourBoxes = () => {
-    const { colors } = colours;
-    return colors.map((colour: any) => <ColourBox background={colour.color} key={colour.name} name={colour.name} />)
-  };
+export const Palette = (palette: IGeneratePalette) => {
+  // const renderColourBoxes = () => {
+  //   return colors.map((colour: any) => <ColourBox background={colour.color} key={colour.name} name={colour.name} />)
+  // };
 
   return (
     <div className="palette">
@@ -30,7 +18,7 @@ export const Palette = ({ colours }: IPaletteProps) => {
         navbar
       </div>
       <div className="palette-colours">
-        {renderColourBoxes()}
+        {/* {renderColourBoxes()} */}
       </div>
       <div>
         Footer
