@@ -2,23 +2,31 @@ import React, { useState } from 'react';
 
 import { ColourBox } from '../ColourBox';
 import { Navbar } from '../Navbar';
+import { Footer } from '../Footer';
 import { IGeneratePalette } from '../../types';
 import './index.css';
 
 export const Palette = (palette: IGeneratePalette) => {
   const [level, setLevel] = useState(500);
+  const [format, setFormat] = useState('hex');
+
+  const { colors, paletteName, emoji } = palette;
 
   const handleLevelChange = (newLevel: number) => {
     setLevel(newLevel);
-  }
+  };
+
+  const handleSelectChange = (value: string) => {
+    setFormat(value);
+  };
 
   const renderColourBoxes = () => {
-    return palette.colors[level].map((color: any) => {
+    return colors[level].map((color: any) => {
       return (
         <ColourBox
-          background={color.hex}
-          key={color.hex}
-          name={color.name}
+          background={color[format]}
+          key={color[format]}
+          name={color[format]}
         />
       )
     });
@@ -27,14 +35,15 @@ export const Palette = (palette: IGeneratePalette) => {
   return (
     <div className="palette">
       <div>
-        <Navbar level={level} handleLevelChange={handleLevelChange} />
+        <Navbar
+          level={level}
+          handleLevelChange={handleLevelChange}
+          handleSelectChange={handleSelectChange} />
       </div>
       <div className="palette-colours">
         {renderColourBoxes()}
       </div>
-      <div>
-        Footer
-      </div>
+      <Footer paletteName={paletteName} emoji={emoji} />
     </div>
   )
 }

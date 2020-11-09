@@ -2,22 +2,6 @@ import chroma from 'chroma-js';
 
 import { IPalette, IGeneratePalette } from '../types';
 
-// interface IGeneratePalette {
-//   paletteName: string;
-//   id: string;
-//   emoji: string;
-//   colors: {
-//     //to prevent missing index signature TS complain
-//     [index: number]: {
-//       hex: string,
-//       id: string,
-//       name: string,
-//       rgb: string,
-//       rgba: string
-//     }[]
-//   }
-// };
-
 const levels = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900];
 
 const getRange = (hexColour: string) => {
@@ -67,7 +51,7 @@ export const generatePalette = (seedPalette: IPalette) => {
         rgb: chroma(scale[i]).css(),
         rgba: chroma(scale[i])
           .css()
-          .replace("rgba", "rgba")
+          .replace("rgb", "rgba")
           .replace(")", ",1.0)")
       });
     }
