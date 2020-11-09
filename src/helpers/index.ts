@@ -1,23 +1,22 @@
 import chroma from 'chroma-js';
 
-import { IPalette } from '../types';
+import { IPalette, IGeneratePalette } from '../types';
 
-
-interface IGeneratePalette {
-  paletteName: string;
-  id: string;
-  emoji: string;
-  colors: {
-    //to prevent missing index signature TS complain
-    [index: number]: any[],
-    level: {
-      hex: string,
-      id: string,
-      name: string,
-      rgb: string
-    }[]
-  }
-};
+// interface IGeneratePalette {
+//   paletteName: string;
+//   id: string;
+//   emoji: string;
+//   colors: {
+//     //to prevent missing index signature TS complain
+//     [index: number]: {
+//       hex: string,
+//       id: string,
+//       name: string,
+//       rgb: string,
+//       rgba: string
+//     }[]
+//   }
+// };
 
 const levels = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900];
 
@@ -45,20 +44,13 @@ export const generatePalette = (seedPalette: IPalette) => {
     paletteName: seedPalette.paletteName,
     id: seedPalette.id,
     emoji: seedPalette.emoji,
-    colors: {
-      level: []
-    }
+    colors: {}
     // 50: [],
     // 100: [],
     // 200: []
   };
 
-  console.log(newPalette)
-
   //build a new colours object {50: [], 100: []...}
-  // for (let i = 0; i < levels.length; i++) {
-  //   newPalette.colors[i] = [];
-  // }
   for (let level of levels) {
     newPalette.colors[level] = [];
   }
@@ -68,7 +60,6 @@ export const generatePalette = (seedPalette: IPalette) => {
     let scale = getScale(color.color, 10).reverse(); //go from dark to light
     //map the scale colour values to the number levels
     for (let i in scale) {
-      // newPalette.colors.map(color => color.push({
       newPalette.colors[levels[i]].push({
         name: `${color.name} ${levels[i]}`,
         id: color.name.toLowerCase().replace(/ /g, "-"),
@@ -81,6 +72,5 @@ export const generatePalette = (seedPalette: IPalette) => {
       });
     }
   }
-  console.log(newPalette);
   return newPalette;
 }

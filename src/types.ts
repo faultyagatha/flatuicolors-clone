@@ -11,12 +11,12 @@ export interface IGeneratePalette {
   emoji: string;
   colors: {
     //to prevent missing index signature TS complain
-    [index: number]: any[],
-    level: {
+    [index: number]: {
       hex: string,
       id: string,
       name: string,
-      rgb: string
+      rgb: string,
+      rgba: string
     }[]
   }
 };
