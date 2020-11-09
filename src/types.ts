@@ -20,3 +20,8 @@ export interface IGeneratePalette {
     }[]
   }
 };
+
+export interface INavbar {
+  level: number;
+  handleLevelChange(newLevel: number): void
+}

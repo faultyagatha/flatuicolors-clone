@@ -1,21 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { ColourBox } from '../ColourBox';
+import { Navbar } from '../Navbar';
 import { IGeneratePalette } from '../../types';
 import './index.css';
 
-//1. navbar
-//2. palette colours
-
 export const Palette = (palette: IGeneratePalette) => {
-  console.log(palette)
+  const [level, setLevel] = useState(500);
+
+  const handleLevelChange = (newLevel: number) => {
+    setLevel(newLevel);
+  }
+
   const renderColourBoxes = () => {
-    // return Object.keys(palette.colors).map((color: any) => {
-    return palette.colors[200].map((color: any) => {
+    return palette.colors[level].map((color: any) => {
       return (
         <ColourBox
           background={color.hex}
-          key={color.name}
+          key={color.hex}
           name={color.name}
         />
       )
@@ -25,7 +27,7 @@ export const Palette = (palette: IGeneratePalette) => {
   return (
     <div className="palette">
       <div>
-        navbar
+        <Navbar level={level} handleLevelChange={handleLevelChange} />
       </div>
       <div className="palette-colours">
         {renderColourBoxes()}
