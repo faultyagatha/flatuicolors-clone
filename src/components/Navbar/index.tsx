@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import IconButton from '@material-ui/core/IconButton';
@@ -8,7 +9,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 
-import { INavbar } from '../../types';
+import { INavbar } from '../../types/types';
 import './index.css'; //must be after rc-slider to override it's native style
 
 export const Navbar = ({ level, handleLevelChange, handleSelectChange }: INavbar) => {
@@ -30,7 +31,7 @@ export const Navbar = ({ level, handleLevelChange, handleSelectChange }: INavbar
   return (
     <header className="navbar">
       <div className="logo">
-        <a href="#">Colour Picker</a>
+        <Link to="/">Colour Picker</Link>
       </div>
       <div className="slider-container">
         <span>Level: {level}</span>

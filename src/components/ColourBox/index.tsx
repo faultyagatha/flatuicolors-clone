@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import CopyToClipboard from 'react-copy-to-clipboard';
 
 import './index.css';
@@ -30,7 +31,9 @@ export const ColourBox = ({ background, name }: IColouBoxProps) => {
           </div>
           <button className="copy-btn">Copy</button>
         </div>
-        <span className="more">MORE</span>
+        <Link to="/" onClick={e => e.stopPropagation()}>
+          <span className="more">MORE</span>
+        </Link>
       </div>
     </CopyToClipboard>
   )

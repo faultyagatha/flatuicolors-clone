@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { ColourBox } from '../ColourBox';
 import { Navbar } from '../Navbar';
 import { Footer } from '../Footer';
-import { IGeneratePalette } from '../../types';
+import { IGeneratePalette } from '../../types/types';
 import './index.css';
 
 export const Palette = (palette: IGeneratePalette) => {
