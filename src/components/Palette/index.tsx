@@ -29,6 +29,7 @@ export const Palette = (palette: IGeneratePalette) => {
           name={color[format]}
           colorId={color.id}
           paletteId={id}
+          showLink={true}
         />
       )
     });

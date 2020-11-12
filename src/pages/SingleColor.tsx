@@ -12,7 +12,6 @@ export const SingleColor = () => {
 
   const palette = findPalette(id);
   console.log('SINGLE PALETTE', palette);
-  console.log(id);
 
   return (
     <div>

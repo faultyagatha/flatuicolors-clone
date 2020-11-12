@@ -67,12 +67,14 @@ export const findPalette = (id: string) => {
   });
 };
 
-export const getShades = (palette: IGeneratePalette, colorToFilterBy: any) => {
+export const getShades = (palette: IGeneratePalette, colorId: string) => {
   let shades: any = [];
   let allColors = palette.colors;
   for (let key in allColors) {
-    shades = shades.concat(allColors[key].filter(color => color.id = colorToFilterBy))
+    console.log(allColors[key])
+    shades = shades.concat(
+      allColors[key].filter(color => color.id === colorId)
+    );
   }
-  console.log(shades);
-  return shades.slice(1);
+  return shades.slice(1); //get rid of level 50
 };

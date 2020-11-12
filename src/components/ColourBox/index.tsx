@@ -9,9 +9,10 @@ interface IColouBoxProps {
   name: string;
   colorId: string;
   paletteId: string;
+  showLink: boolean;
 };
 
-export const ColourBox = ({ background, name, paletteId, colorId }: IColouBoxProps) => {
+export const ColourBox = ({ background, name, paletteId, colorId, showLink }: IColouBoxProps) => {
   const [isCopied, setIsCopied] = useState(false);
 
   const handleCopy = () => {
@@ -33,9 +34,9 @@ export const ColourBox = ({ background, name, paletteId, colorId }: IColouBoxPro
           </div>
           <button className="copy-btn">Copy</button>
         </div>
-        <Link to={`/palette/${paletteId}/${colorId}`} onClick={e => e.stopPropagation()}>
+        {showLink && <Link to={`/palette/${paletteId}/${colorId}`} onClick={e => e.stopPropagation()}>
           <span className="more">MORE</span>
-        </Link>
+        </Link>}
       </div>
     </CopyToClipboard>
   )
