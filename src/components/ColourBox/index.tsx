@@ -7,9 +7,11 @@ import './index.css';
 interface IColouBoxProps {
   background: string;
   name: string;
+  colorId: string;
+  paletteId: string;
 };
 
-export const ColourBox = ({ background, name }: IColouBoxProps) => {
+export const ColourBox = ({ background, name, paletteId, colorId }: IColouBoxProps) => {
   const [isCopied, setIsCopied] = useState(false);
 
   const handleCopy = () => {
@@ -31,7 +33,7 @@ export const ColourBox = ({ background, name }: IColouBoxProps) => {
           </div>
           <button className="copy-btn">Copy</button>
         </div>
-        <Link to="/" onClick={e => e.stopPropagation()}>
+        <Link to={`/palette/${paletteId}/${colorId}`} onClick={e => e.stopPropagation()}>
           <span className="more">MORE</span>
         </Link>
       </div>

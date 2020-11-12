@@ -10,7 +10,7 @@ export const Palette = (palette: IGeneratePalette) => {
   const [level, setLevel] = useState(500);
   const [format, setFormat] = useState('hex');
 
-  const { colors, paletteName, emoji } = palette;
+  const { colors, paletteName, emoji, id } = palette;
 
   const handleLevelChange = (newLevel: number) => {
     setLevel(newLevel);
@@ -27,6 +27,8 @@ export const Palette = (palette: IGeneratePalette) => {
           background={color[format]}
           key={color[format]}
           name={color[format]}
+          colorId={color.id}
+          paletteId={id}
         />
       )
     });

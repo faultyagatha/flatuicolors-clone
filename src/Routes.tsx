@@ -3,6 +3,7 @@ import { Route, Switch, useParams } from 'react-router-dom';
 
 import { Palette } from './components/Palette';
 import { PaletteList } from './components/PaletteList';
+import { SingleColorPalette } from './components/SingleColorPalette';
 import { seedPalette } from './seed';
 import { generatePalette } from './helpers';
 import { IParams, IGeneratePalette, } from './types/types';
@@ -43,7 +44,7 @@ export const Routes = () => {
             )
         )}
       />
-      <Route exact path="/palette/:paletteId/:colorId" render={() => <h1>Single Color Page</h1>} />
+      <Route exact path="/palette/:paletteId/:colorId" render={() => <SingleColorPalette />} />
     </Switch>
   )
 };
