@@ -45,11 +45,12 @@ export const PaletteList = (props: Props) => {
   const { seedPalettes, classes } = props;
 
   const gotToPalette = (id: string) => {
-    console.log(id);
+    console.log('palette id', id);
     history.push(`/palette/${id}`);
   };
 
   if (classes) {
+    console.log(classes);
     return (
       <div className={classes.root} >
         <div className={classes.container}>
@@ -65,16 +66,11 @@ export const PaletteList = (props: Props) => {
       </div>
     )
   } else {
+    console.log('CLASSES', classes);
     return (
       <div>
         <h1>React Color</h1>
-        {/* {seedPalettes.map(palette => (
-        <p>
-          <Link to={`/palette/${palette.id}`}>{palette.paletteName}</Link>
-        </p>
-      ))} */}
         {seedPalettes.map(palette => (
-          // console.log(palette)
           <MiniPalette {...palette} handlePaletteClick={() => gotToPalette(palette.id)} />
         ))}
       </div>

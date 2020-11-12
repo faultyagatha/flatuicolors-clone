@@ -35,6 +35,15 @@ export interface IParams {
   id: string;
 };
 
+export interface IColorParams extends IParams {
+  colorId: string;
+}
+
 export interface IPaletteList {
   seedPalettes: IPalette[];
 };
+
+export interface ISingleColorPalette {
+  colorId: string;
+  palette: IGeneratePalette;
+}

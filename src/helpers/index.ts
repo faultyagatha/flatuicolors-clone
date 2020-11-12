@@ -1,6 +1,7 @@
 import chroma from 'chroma-js';
 
 import { IPalette, IGeneratePalette } from '../types/types';
+import { seedPalette } from '../seed';
 
 const levels = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900];
 
@@ -57,4 +58,21 @@ export const generatePalette = (seedPalette: IPalette) => {
     }
   }
   return newPalette;
-}
+};
+
+export const findPalette = (id: string) => {
+  return seedPalette.find((palette: any) => {
+    // console.log(palette.id)
+    return palette.id === id;
+  });
+};
+
+export const getShades = (palette: IGeneratePalette, colorToFilterBy: any) => {
+  let shades: any = [];
+  let allColors = palette.colors;
+  for (let key in allColors) {
+    shades = shades.concat(allColors[key].filter(color => color.id = colorToFilterBy))
+  }
+  console.log(shades);
+  return shades.slice(1);
+};
