@@ -47,3 +47,12 @@ export interface ISingleColorPalette {
   colorId: string;
   palette: IGeneratePalette;
 }
+
+export interface IColouBoxProps {
+  background: string;
+  name: string;
+  colorId: string;
+  paletteId: string;
+  showLink: boolean;
+  classes?: any;
+};

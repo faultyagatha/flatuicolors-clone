@@ -5,13 +5,9 @@ import { IPaletteList, IPalette } from '../../types/types';
 import { WithStylesPublic } from '../../types/maUI';
 
 import MiniPalette from '../MiniPalette';
-import { withStyles, WithStyles, createStyles } from "@material-ui/styles";
+import { withStyles, WithStyles, createStyles, makeStyles } from "@material-ui/styles";
 
-interface Props extends WithStylesPublic<typeof styles> {
-  seedPalettes: IPalette[];
-}
-
-const styles = createStyles({
+const useStyles = makeStyles({
   root: {
     backgroundColor: "blue",
     height: "100vh",
@@ -40,17 +36,18 @@ const styles = createStyles({
   }
 });
 
-export const PaletteList = (props: Props) => {
+export const PaletteList = (props: IPaletteList) => {
+  const classes = useStyles();
   const history = useHistory();
-  const { seedPalettes, classes } = props;
+  const { seedPalettes } = props;
 
-  const gotToPalette = (id: string) => {
+  const goToPalette = (id: string) => {
     console.log('palette id', id);
     history.push(`/palette/${id}`);
   };
 
   if (classes) {
-    console.log(classes);
+    console.log('CLASSES', classes);
     return (
       <div className={classes.root} >
         <div className={classes.container}>
@@ -59,7 +56,7 @@ export const PaletteList = (props: Props) => {
           </nav>
           <div className={classes.palettes}>
             {seedPalettes.map(palette => (
-              <MiniPalette {...palette} handlePaletteClick={() => gotToPalette(palette.id)} />
+              <MiniPalette {...palette} handlePaletteClick={() => goToPalette(palette.id)} />
             ))}
           </div>
         </div>
@@ -71,11 +68,10 @@ export const PaletteList = (props: Props) => {
       <div>
         <h1>React Color</h1>
         {seedPalettes.map(palette => (
-          <MiniPalette {...palette} handlePaletteClick={() => gotToPalette(palette.id)} />
+          <MiniPalette {...palette} handlePaletteClick={() => goToPalette(palette.id)} />
         ))}
       </div>
     )
   }
 };
-
-export default withStyles(styles)(PaletteList);
+export default PaletteList;
