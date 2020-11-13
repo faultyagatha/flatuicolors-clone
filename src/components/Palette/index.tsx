@@ -40,6 +40,7 @@ export const Palette = (palette: IGeneratePalette) => {
       <div>
         <Navbar
           level={level}
+          isSingleColor={false}
           handleLevelChange={handleLevelChange}
           handleSelectChange={handleSelectChange} />
       </div>

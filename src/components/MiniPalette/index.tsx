@@ -17,7 +17,8 @@ const styles = createStyles({
   },
   colors: {
     backgroundColor: "#dae1e4",
-    height: "150px",
+    // height: "200px",
+    height: "170px",
     width: "100%",
     borderRadius: "5px",
     overflow: "hidden"

@@ -26,8 +26,9 @@ export interface IGeneratePalette {
 };
 
 export interface INavbar {
-  level: number;
-  handleLevelChange(newLevel: number): void;
+  level?: number;
+  isSingleColor: boolean;
+  handleLevelChange?(newLevel: number): void;
   handleSelectChange(value: string): void;
 };
 
@@ -56,3 +57,4 @@ export interface IColouBoxProps {
   showLink: boolean;
   classes?: any;
 };
+

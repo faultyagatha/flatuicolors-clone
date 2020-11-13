@@ -12,7 +12,7 @@ import 'rc-slider/assets/index.css';
 import { INavbar } from '../../types/types';
 import './index.css'; //must be after rc-slider to override it's native style
 
-export const Navbar = ({ level, handleLevelChange, handleSelectChange }: INavbar) => {
+export const Navbar = ({ level, isSingleColor, handleLevelChange, handleSelectChange }: INavbar) => {
   const [format, setFormat] = useState('hex');
   const [isOpen, setIsOpen] = useState(false);
 
@@ -33,7 +33,7 @@ export const Navbar = ({ level, handleLevelChange, handleSelectChange }: INavbar
       <div className="logo">
         <Link to="/">Colour Picker</Link>
       </div>
-      <div className="slider-container">
+      {!isSingleColor && <div className="slider-container">
         <span>Level: {level}</span>
         <div className="slider">
           <Slider
@@ -43,7 +43,7 @@ export const Navbar = ({ level, handleLevelChange, handleSelectChange }: INavbar
             step={100}
             onAfterChange={handleLevelChange} />
         </div>
-      </div>
+      </div>}
       <div className="select-container">
         <Select value={format} onChange={handleFormatChange}>
           <MenuItem value="hex">HEX - #ffffff</MenuItem>
