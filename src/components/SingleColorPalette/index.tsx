@@ -2,16 +2,16 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import { ISingleColorPalette } from '../../types/types';
+import { useStyles } from './useStyles';
 import { getShades } from '../../helpers';
 import { ColourBox } from '../ColourBox';
 import { Navbar } from '../Navbar';
 import { Footer } from '../Footer';
 
-import '../Palette/index.css'; //TODO: replace with material UI styles
-
 export const SingleColorPalette = ({ colorId, palette }: ISingleColorPalette) => {
   const history = useHistory();
   const [format, setFormat] = useState('hex');
+  const classes = useStyles();
 
   const shades = getShades(palette, colorId);
   console.log('PALETTE: ', palette);
@@ -33,20 +33,21 @@ export const SingleColorPalette = ({ colorId, palette }: ISingleColorPalette) =>
       paletteId={palette.id}
       colorId={color.colorId}
       showLink={false}
+      showFullPalette={false}
     />
   });
 
   return (
-    <div className='palette'>
+    <div className={classes.palette}>
       <Navbar
         isSingleColor={true}
         handleSelectChange={handleFormatChange}
       />
-      <div className='palette-colours'>
+      <div className={classes.colors}>
         {colorBoxes}
       </div>
       <div
-        className='go-back'
+        className={classes.goBack}
         onClick={() => handleGoBackClick(palette.id)}
       >
         Go Back

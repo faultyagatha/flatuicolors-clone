@@ -10,16 +10,17 @@ import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 
 import { INavbar } from '../../types/types';
-import './index.css'; //must be after rc-slider to override it's native style
+import { useStyles } from './useStyles';
 
 export const Navbar = ({ level, isSingleColor, handleLevelChange, handleSelectChange }: INavbar) => {
   const [format, setFormat] = useState('hex');
   const [isOpen, setIsOpen] = useState(false);
+  const classes = useStyles();
 
   const handleFormatChange = (e: any) => {
     e.preventDefault();
     setIsOpen(true);
-    console.log(isOpen);
+    // console.log(isOpen);
     setFormat(e.target.value);
     handleSelectChange(e.target.value);
   };
@@ -29,13 +30,13 @@ export const Navbar = ({ level, isSingleColor, handleLevelChange, handleSelectCh
   };
 
   return (
-    <header className="navbar">
-      <div className="logo">
+    <header className={classes.navbar}>
+      <div className={classes.logo}>
         <Link to="/">Colour Picker</Link>
       </div>
-      {!isSingleColor && <div className="slider-container">
+      {!isSingleColor && <div className={classes.slider}>
         <span>Level: {level}</span>
-        <div className="slider">
+        <div>
           <Slider
             defaultValue={level}
             min={100}
@@ -44,7 +45,7 @@ export const Navbar = ({ level, isSingleColor, handleLevelChange, handleSelectCh
             onAfterChange={handleLevelChange} />
         </div>
       </div>}
-      <div className="select-container">
+      <div className={classes.selectContainer}>
         <Select value={format} onChange={handleFormatChange}>
           <MenuItem value="hex">HEX - #ffffff</MenuItem>
           <MenuItem value="rgb">RGB - 255, 255, 255</MenuItem>

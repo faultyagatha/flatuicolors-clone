@@ -1,17 +1,14 @@
 import React from 'react';
 
-import './index.css';
-
-interface IFooter {
-  paletteName: string;
-  emoji: string;
-}
+import { IFooter } from '../../types/types';
+import { useStyles } from './useStyles';
 
 export const Footer = ({ paletteName, emoji }: IFooter) => {
+  const classes = useStyles();
   return (
-    <footer className="footer">
+    <footer className={classes.footer}>
       {paletteName}
-      <span className="emoji">{emoji}</span>
+      <span className={classes.emoji}>{emoji}</span>
     </footer>
   )
 };

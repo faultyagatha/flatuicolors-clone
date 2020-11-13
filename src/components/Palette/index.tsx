@@ -4,12 +4,13 @@ import { ColourBox } from '../ColourBox';
 import { Navbar } from '../Navbar';
 import { Footer } from '../Footer';
 import { IGeneratePalette } from '../../types/types';
-import './index.css';
+import { useStyles } from './useStyles';
 
 export const Palette = (palette: IGeneratePalette) => {
   const [level, setLevel] = useState(500);
   const [format, setFormat] = useState('hex');
 
+  const classes = useStyles();
   const { colors, paletteName, emoji, id } = palette;
 
   const handleLevelChange = (newLevel: number) => {
@@ -30,13 +31,14 @@ export const Palette = (palette: IGeneratePalette) => {
           colorId={color.id}
           paletteId={id}
           showLink={true}
+          showFullPalette={true}
         />
       )
     });
   };
 
   return (
-    <div className="palette">
+    <div className={classes.palette}>
       <div>
         <Navbar
           level={level}
@@ -44,7 +46,7 @@ export const Palette = (palette: IGeneratePalette) => {
           handleLevelChange={handleLevelChange}
           handleSelectChange={handleSelectChange} />
       </div>
-      <div className="palette-colours">
+      <div className={classes.colors}>
         {renderColourBoxes()}
       </div>
       <Footer paletteName={paletteName} emoji={emoji} />

@@ -24,6 +24,15 @@
   font-size: 12px;
 }
 
+.light-text {
+  color: azure;
+}
+
+.colour-box .dark-text {
+  color: black;
+}
+
+
 .copy-btn {
   width: 100px;
   height: 30px;

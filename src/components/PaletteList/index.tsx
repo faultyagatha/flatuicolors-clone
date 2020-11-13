@@ -1,8 +1,8 @@
 import React from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import { IPaletteList } from '../../types/types';
-import MiniPalette from '../MiniPalette';
+import { MiniPalette } from '../MiniPalette';
 import { useStyles } from './useStyles';
 
 export const PaletteList = (props: IPaletteList) => {
@@ -11,7 +11,6 @@ export const PaletteList = (props: IPaletteList) => {
   const { seedPalettes } = props;
 
   const goToPalette = (id: string) => {
-    console.log('palette id', id);
     history.push(`/palette/${id}`);
   };
 
@@ -23,7 +22,10 @@ export const PaletteList = (props: IPaletteList) => {
         </nav>
         <div className={classes.palettes}>
           {seedPalettes.map(palette => (
-            <MiniPalette {...palette} handlePaletteClick={() => goToPalette(palette.id)} />
+            <MiniPalette
+              key={palette.paletteName}
+              {...palette}
+              handlePaletteClick={() => goToPalette(palette.id)} />
           ))}
         </div>
       </div>

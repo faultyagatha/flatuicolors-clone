@@ -55,6 +55,13 @@ export interface IColouBoxProps {
   colorId: string;
   paletteId: string;
   showLink: boolean;
+  showFullPalette: boolean;
   classes?: any;
 };
+
+export interface IFooter {
+  paletteName: string;
+  emoji: string;
+}
+
 
