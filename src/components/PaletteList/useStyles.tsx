@@ -18,7 +18,12 @@ export const useStyles = makeStyles({
   nav: {
     display: "flex",
     width: "100%",
-    justifyContent: "space-between"
+    justifyContent: "space-between",
+    alignItems: "center",
+    color: "black",
+    "& a": {
+      color: "black"
+    }
   },
   palettes: {
     // boxSizing: "border-box",

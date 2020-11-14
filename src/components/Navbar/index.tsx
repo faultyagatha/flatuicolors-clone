@@ -20,7 +20,6 @@ export const Navbar = ({ level, isSingleColor, handleLevelChange, handleSelectCh
   const handleFormatChange = (e: any) => {
     e.preventDefault();
     setIsOpen(true);
-    // console.log(isOpen);
     setFormat(e.target.value);
     handleSelectChange(e.target.value);
   };

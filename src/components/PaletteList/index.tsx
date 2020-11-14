@@ -1,5 +1,5 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import { IPaletteList } from '../../types/types';
 import { MiniPalette } from '../MiniPalette';
@@ -19,6 +19,7 @@ export const PaletteList = (props: IPaletteList) => {
       <div className={classes.container}>
         <nav className={classes.nav}>
           <h1>React Colors</h1>
+          <Link to='/palette/new'>Create Palette</Link>
         </nav>
         <div className={classes.palettes}>
           {seedPalettes.map(palette => (
