@@ -88,8 +88,8 @@ export const CreatePalette = () => {
     setOpen(false);
   };
 
-  const handleChangeColor = (newColor: any) => {
-    setColor(newColor);
+  const handleChangeColor = (newColor: ColorResult) => {
+    setColor(newColor.hex);
   };
 
   return (
@@ -133,10 +133,8 @@ export const CreatePalette = () => {
           <Button variant="contained" color="secondary">Clear Palette</Button>
           <Button variant="contained" color="primary">Random Colour</Button>
         </div>
-        <ChromePicker color={color} onChangeComplete={newColor => handleChangeColor(newColor)} />
-
-        <Button variant="contained" color="primary">Add Colour</Button>
-
+        <ChromePicker color={color} onChangeComplete={(newColor) => handleChangeColor(newColor)} />
+        <Button variant="contained" color="primary" style={{ backgroundColor: color }}>Add Colour</Button>
         <Divider />
       </Drawer>
       <main
