@@ -1,26 +1,21 @@
-import { createStore, compose } from 'redux';
+import { createStore } from 'redux';
 
-import { createRootReducer } from './reducers';
+import { rootReducer, RootState } from './reducers';
+import { seedPalette } from '../seed';
 
-export const makeStore = (initialState = loadState()) => {
-  let composeEnhancers = compose;
-  if (process.env.NODE_ENV === "development") {
-    if ((window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) {
-      composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
-    }
-  }
+//TODO: fix the type
+// const initState: any = {
+//   palettes: {
+//     palette: seedPalette
+//   }
+// };
 
+export const makeStore = () => {
   const store = createStore(
-    createRootReducer,
-    initialState
+    rootReducer,
+    // initialState,
+    (window as any).__REDUX_DEVTOOLS_EXTENSION__ && (window as any).__REDUX_DEVTOOLS_EXTENSION__()
   );
-
-  if ((module as any).hot) {
-    (module as any).hot.accept("./reducers", () => {
-      const nextReducer = require("./reducers").default;
-      store.replaceReducer(nextReducer);
-    });
-  }
   return store;
 }
 

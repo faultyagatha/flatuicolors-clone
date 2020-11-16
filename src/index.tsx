@@ -9,13 +9,13 @@ import { makeStore, saveState } from './redux/store';
 import reportWebVitals from './reportWebVitals';
 
 const store = makeStore();
-console.log(store);
+console.log(store.getState());
 
-store.subscribe(() => {
-  saveState({
-    palettes: store.getState()
-  });
-});
+// store.subscribe(() => {
+//   saveState({
+//     palettes: store.getState()
+//   });
+// });
 
 const WithProvider = () => {
   return (

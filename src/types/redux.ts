@@ -2,6 +2,7 @@ import { IPalette } from './types';
 
 export const SAVE_PALETTE = 'SAVE_PALETTE';
 export const FIND_PALETTE = 'FIND_PALETTE';
+export const GENERATE_PALETTE = 'GENERATE_PALETTE';
 
 type savePaletteAction = {
   type: typeof SAVE_PALETTE;
@@ -13,12 +14,13 @@ type findPaletteAction = {
   payload: { palette: any }
 };
 
-export type paletteActions = findPaletteAction | savePaletteAction;
+type generatePaletteAction = {
+  type: typeof GENERATE_PALETTE;
+  payload: { palette: any }
+};
+
+export type paletteActions = findPaletteAction | savePaletteAction | generatePaletteAction;
 
 export type PaletteState = {
-  palette: IPalette[];
-}
-
-export type AppState = {
-  palettes: PaletteState;
+  palettes: IPalette[];
 };
