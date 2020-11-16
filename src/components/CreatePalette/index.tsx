@@ -23,7 +23,7 @@ interface ICreatePalette {
   savePalette(newPalette: any): void;
 }
 
-
+//TODO: refactor, clean up the input field
 export const CreatePalette = ({ savePalette }: ICreatePalette) => {
   const history = useHistory();
   const classes = useStyles();
@@ -32,6 +32,7 @@ export const CreatePalette = ({ savePalette }: ICreatePalette) => {
   const [currentColor, setCurrentColor] = useState('purple');
   const [colorsArr, setColorsArr] = useState([{ color: 'purple', name: 'purple' }]);
   const [colorName, setColorName] = useState('');
+  const [paletteName, setPaletteName] = useState('my-palette');
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -45,26 +46,32 @@ export const CreatePalette = ({ savePalette }: ICreatePalette) => {
     setCurrentColor(newColor.hex);
   };
 
-  const handeleAddColor = (color: string) => {
-    const newColor = {
-      color: color,
-      name: colorName
-    }
-    // const newColorsArr = colorsArr.concat(newColor);
-    setColorsArr(colorsArr.concat(newColor));
-    console.log(colorsArr)
+  const handleChangeColorName = (e: any) => {
+    setColorName(e.target.value);
   };
 
-  const handleNameChange = (e: any) => {
-    setColorName(e.target.value);
+  const handleChangePaletteName = (e: any) => {
+    setPaletteName(e.target.value);
+  };
+
+  const handeleAddColor = () => {
+    const newColor = {
+      color: currentColor,
+      name: colorName
+    }
+    setColorsArr(colorsArr.concat(newColor));
+    setColorName(' '); //clean up the input
+    console.log(colorsArr)
   };
 
   const handleSavePalette = () => {
     const newPalette = {
-      paletteName: "New test Palette",
+      paletteName: paletteName,
+      id: paletteName.toLowerCase().replace(/ /g, "-"),
       colors: colorsArr
     }
     savePalette(newPalette);
+    console.log(newPalette);
     history.push("/");
   };
 
@@ -77,7 +84,7 @@ export const CreatePalette = ({ savePalette }: ICreatePalette) => {
     ValidatorForm.addValidationRule("isColorUnique", value =>
       colorsArr.every(({ color }) => color !== currentColor)
     );
-  }, [colorsArr, currentColor])
+  }, [colorsArr, currentColor, colorName])
 
   return (
     <div className={classes.root}>
@@ -98,11 +105,20 @@ export const CreatePalette = ({ savePalette }: ICreatePalette) => {
           >
             <MenuIcon />
           </IconButton>
-          <Button
-            variant="contained"
-            color="secondary"
-            onClick={handleSavePalette}
-          >Save Palette</Button>
+          <ValidatorForm onSubmit={handleSavePalette}>
+            <TextValidator
+              value={paletteName}
+              name="paletteName"
+              label="Palette Name"
+              onChange={handleChangePaletteName} />
+            <Button
+              variant="contained"
+              color="secondary"
+              type="submit"
+            >
+              Save Palette
+          </Button>
+          </ValidatorForm>
         </Toolbar>
       </AppBar>
       <Drawer
@@ -128,28 +144,28 @@ export const CreatePalette = ({ savePalette }: ICreatePalette) => {
           </div>
           <ChromePicker color={currentColor} onChangeComplete={(newColor) => handleChangeColor(newColor)} />
           <ValidatorForm
-            onSubmit={() => handeleAddColor(currentColor)}
+            onSubmit={handeleAddColor}
             onError={errors => console.log(errors)}>
             <TextValidator
               value={colorName}
-              name='color'
-              onChange={e => handleNameChange(e)}
+              name="colorName"
+              onChange={e => handleChangeColorName(e)}
               validators={["required", "isColorNameUnique", "isColorUnique"]}
               errorMessages={[
                 "Enter a color name",
                 "Color name must be unique",
                 "Color already used!"
               ]} />
-          </ValidatorForm>
-          <Button
-            variant="contained"
-            color="primary"
-            type="submit"
-            style={{ backgroundColor: currentColor }}
-            onClick={() => handeleAddColor(currentColor)}
-          >
-            Add Colour
+            <Button
+              variant="contained"
+              color="primary"
+              type="submit"
+              style={{ backgroundColor: currentColor }}
+            >
+              Add Colour
           </Button>
+          </ValidatorForm>
+
           <Divider />
         </div>
       </Drawer>
@@ -160,7 +176,7 @@ export const CreatePalette = ({ savePalette }: ICreatePalette) => {
       >
         <div className={classes.drawerHeader} />
         <ul>{colorsArr.map(color => (
-          <DraggableColorBox color={color.color} />
+          <DraggableColorBox color={color.color} name={color.name} />
         ))}</ul>
       </main>
     </div>

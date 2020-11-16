@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/styles';
 
 interface IDraggableColorBox {
   color: string;
+  name: string;
 };
 
 const useStyles = makeStyles({
@@ -20,11 +21,11 @@ const useStyles = makeStyles({
   }
 });
 
-export const DraggableColorBox = ({ color }: IDraggableColorBox) => {
+export const DraggableColorBox = ({ color, name }: IDraggableColorBox) => {
   const classes = useStyles();
   return (
     <div style={{ backgroundColor: color }}>
-      {color}
+      {name}
     </div>
   )
 };
