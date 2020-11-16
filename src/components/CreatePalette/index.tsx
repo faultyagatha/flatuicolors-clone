@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+
 import clsx from 'clsx';
 import { useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -20,11 +21,11 @@ import { DraggableColorBox } from '../DraggableColorBox';
 import { useStyles } from './useStyles';
 
 interface ICreatePalette {
-  savePalette(newPalette: any): void;
+  saveNewPalette(newPalette: any): void;
 }
 
 //TODO: refactor, clean up the input field
-export const CreatePalette = ({ savePalette }: ICreatePalette) => {
+export const CreatePalette = ({ saveNewPalette }: ICreatePalette) => {
   const history = useHistory();
   const classes = useStyles();
   const theme = useTheme();
@@ -70,8 +71,8 @@ export const CreatePalette = ({ savePalette }: ICreatePalette) => {
       id: paletteName.toLowerCase().replace(/ /g, "-"),
       colors: colorsArr
     }
-    savePalette(newPalette);
-    console.log(newPalette);
+    saveNewPalette(newPalette);
+    // console.log(newPalette);
     history.push("/");
   };
 

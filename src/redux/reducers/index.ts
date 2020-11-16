@@ -32,7 +32,6 @@ function palette(
       return { palettes: [...state.palettes, palette] };
     }
     default:
-      console.log(state);
       return state;
   }
 };
