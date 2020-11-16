@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-
 import clsx from 'clsx';
 import { useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -20,12 +19,14 @@ import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import { DraggableColorBox } from '../DraggableColorBox';
 import { useStyles } from './useStyles';
 
+//TODO: FIX TYPES
 interface ICreatePalette {
   saveNewPalette(newPalette: any): void;
+  palettes: any
 }
 
 //TODO: refactor, clean up the input field
-export const CreatePalette = ({ saveNewPalette }: ICreatePalette) => {
+export const CreatePalette = ({ saveNewPalette, palettes }: ICreatePalette) => {
   const history = useHistory();
   const classes = useStyles();
   const theme = useTheme();
@@ -85,7 +86,11 @@ export const CreatePalette = ({ saveNewPalette }: ICreatePalette) => {
     ValidatorForm.addValidationRule("isColorUnique", value =>
       colorsArr.every(({ color }) => color !== currentColor)
     );
-  }, [colorsArr, currentColor, colorName])
+
+    ValidatorForm.addValidationRule("isPaletteNameUnique", value =>
+      palettes.every(({ paletteName }: any) => paletteName.toLowerCase() !== value.toLowerCase())
+    );
+  }, [colorsArr, currentColor, colorName, paletteName, palettes])
 
   return (
     <div className={classes.root}>
@@ -111,7 +116,9 @@ export const CreatePalette = ({ saveNewPalette }: ICreatePalette) => {
               value={paletteName}
               name="paletteName"
               label="Palette Name"
-              onChange={handleChangePaletteName} />
+              onChange={handleChangePaletteName}
+              validators={["required", "isPaletteNameUnique"]}
+              errorMessages={["Enter Palette Name", "Name is already taken"]} />
             <Button
               variant="contained"
               color="secondary"
