@@ -1,16 +1,35 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { Provider } from 'react-redux';
 
 import './index.css';
 import App from './App';
+import { makeStore, saveState } from './redux/store';
 import reportWebVitals from './reportWebVitals';
+
+const store = makeStore();
+console.log(store);
+
+store.subscribe(() => {
+  saveState({
+    palettes: store.getState()
+  });
+});
+
+const WithProvider = () => {
+  return (
+    <Provider store={store}>
+      <Router>
+        <App />
+      </Router>
+    </Provider>
+  )
+};
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router>
-      <App />
-    </Router>
+    <WithProvider />
   </React.StrictMode>,
   document.getElementById('root')
 );
