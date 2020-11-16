@@ -9,7 +9,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 
-import { INavbar } from '../../types/types';
+import { INavbar } from '../../types';
 import { useStyles } from './useStyles';
 
 export const Navbar = ({ level, isSingleColor, handleLevelChange, handleSelectChange }: INavbar) => {

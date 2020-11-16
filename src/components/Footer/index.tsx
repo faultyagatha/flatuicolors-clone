@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { IFooter } from '../../types/types';
+import { IFooter } from '../../types';
 import { useStyles } from './useStyles';
 
 export const Footer = ({ paletteName, emoji }: IFooter) => {

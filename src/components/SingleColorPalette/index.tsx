@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
-import { ISingleColorPalette } from '../../types/types';
+import { ISingleColorPalette } from '../../types';
 import { useStyles } from './useStyles';
 import { getShades } from '../../helpers';
 import { ColourBox } from '../ColourBox';

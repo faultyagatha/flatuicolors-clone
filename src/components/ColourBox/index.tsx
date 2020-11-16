@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import CopyToClipboard from 'react-copy-to-clipboard';
 
-import { IColouBoxProps } from '../../types/types';
+import { IColouBoxProps } from '../../types';
 import { useStyles } from './useStyles';
 
 export const ColourBox = (props: IColouBoxProps) => {

@@ -19,10 +19,10 @@ function palette(
   action: paletteActions
 ): PaletteState {
   switch (action.type) {
-    case FIND_PALETTE: {
-      const { palette } = action.payload;
-      return { palettes: [...state.palettes, palette] }
-    }
+    // case FIND_PALETTE: {
+    //   const { palette } = action.payload;
+    //   return { palettes: [...state.palettes, palette] }
+    // }
     case SAVE_PALETTE: {
       const { palette } = action.payload;
       return { palettes: [...state.palettes, palette] };

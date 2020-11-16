@@ -1,26 +1,26 @@
-import { IPalette } from './types';
+import { IPalette } from './app';
 
 export const SAVE_PALETTE = 'SAVE_PALETTE';
 export const FIND_PALETTE = 'FIND_PALETTE';
 export const GENERATE_PALETTE = 'GENERATE_PALETTE';
 
-type savePaletteAction = {
+interface savePaletteAction {
   type: typeof SAVE_PALETTE;
   payload: { palette: any }
 };
 
-type findPaletteAction = {
+interface findPaletteAction {
   type: typeof FIND_PALETTE;
   payload: { palette: any }
 };
 
-type generatePaletteAction = {
+interface generatePaletteAction {
   type: typeof GENERATE_PALETTE;
   payload: { palette: any }
 };
 
 export type paletteActions = findPaletteAction | savePaletteAction | generatePaletteAction;
 
-export type PaletteState = {
+export interface PaletteState {
   palettes: IPalette[];
 };

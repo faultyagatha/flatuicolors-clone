@@ -1,10 +1,12 @@
 import React from 'react';
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 import { PaletteList } from '../components/PaletteList';
+import { RootState } from '../redux/reducers';
+// import { PaletteState } from '../types';
 
 export const AllPallets = () => {
-  const { palettes } = useSelector((state: any) => state.palette)
+  const { palettes } = useSelector((state: RootState) => state.palette)
 
   return (
     <div>

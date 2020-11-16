@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { IMiniPalette } from '../../types/types';
+import { IMiniPalette } from '../../types';
 import { useStyles } from './useStyles';
 
 export const MiniPalette = (props: IMiniPalette) => {

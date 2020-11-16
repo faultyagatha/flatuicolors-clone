@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
-import { IPaletteList } from '../../types/types';
+import { IPaletteList } from '../../types';
 import { MiniPalette } from '../MiniPalette';
 import { useStyles } from './useStyles';
 

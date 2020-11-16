@@ -3,22 +3,23 @@ import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 
 import { SingleColorPalette } from '../components/SingleColorPalette';
-// import { generatePalette } from '../helpers';
-import { IColorParams } from '../types/types';
-import { findPaletteById, generateFromSeed } from '../redux/actions';
+import { generatePalette } from '../helpers';
+import { IColorParams } from '../types';
+import { generateFromSeed } from '../redux/actions';
+import { RootState } from '../redux/reducers';
 
 export const SingleColor = () => {
   const dispatch = useDispatch();
   const { id, colorId } = useParams<IColorParams>();
-  console.log('SINGLE COLOUR ID: ', colorId);
+  const { palettes } = useSelector((state: RootState) => state.palette);
 
-  const palette = dispatch(findPaletteById(id));
-  const generatePalette = dispatch(generateFromSeed(palette));
+  const [palette] = palettes.filter(p => p.id === id);
+  // const generatePalette = dispatch(generateFromSeed(palette));
   console.log('SINGLE PALETTE', palette);
 
   return (
     <div>
-      {/* {palette && <SingleColorPalette colorId={colorId} palette={generatePalette} />} */}
+      {palette && <SingleColorPalette colorId={colorId} palette={generatePalette(palette)} />}
     </div>
   )
 };
