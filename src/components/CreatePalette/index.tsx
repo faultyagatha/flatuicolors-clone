@@ -15,26 +15,31 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import { ChromePicker, ColorResult } from 'react-color';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
+import { arrayMove, SortEndHandler } from 'react-sortable-hoc';
 
-import { DraggableColorBox } from '../DraggableColorBox';
+import { DraggableColorList } from '../DraggableColorList';
 import { useStyles } from './useStyles';
+import { IPalette } from '../../types';
 
 //TODO: FIX TYPES
 interface ICreatePalette {
   saveNewPalette(newPalette: any): void;
-  palettes: any
+  palettes: IPalette[];
+  maxColors: number;
 }
 
 //TODO: refactor, clean up the input field
-export const CreatePalette = ({ saveNewPalette, palettes }: ICreatePalette) => {
+export const CreatePalette = ({ saveNewPalette, palettes, maxColors }: ICreatePalette) => {
   const history = useHistory();
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = useState(false);
   const [currentColor, setCurrentColor] = useState('purple');
-  const [colorsArr, setColorsArr] = useState([{ color: 'purple', name: 'purple' }]);
+  const [colorsArr, setColorsArr] = useState(palettes[0].colors)//useState([{ color: 'purple', name: 'purple' }]);
   const [colorName, setColorName] = useState('');
   const [paletteName, setPaletteName] = useState('my-palette');
+
+  const isPaletteFull = colorsArr.length >= maxColors;
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -77,6 +82,27 @@ export const CreatePalette = ({ saveNewPalette, palettes }: ICreatePalette) => {
     history.push("/");
   };
 
+  const handleDeleteClick = (colorName: string) => {
+    setColorsArr(colorsArr.filter(c => c.name !== colorName));
+    console.log(colorsArr)
+  };
+
+  const handleClearColors = () => {
+    setColorsArr([]);
+  };
+
+  const handleAddRandomColor = () => {
+    //pick random color from the existing palettes
+    const existingColors = palettes.map(p => p.colors).flat();
+    let rand = Math.floor(Math.random() * existingColors.length);
+    const randomColor = colorsArr.concat(existingColors[rand]);
+    setColorsArr(randomColor);
+  };
+
+  const onSortEnd: SortEndHandler = ({ oldIndex, newIndex }) => {
+    setColorsArr((colors) => arrayMove(colors, oldIndex, newIndex));
+  };
+
   useEffect(() => {
     ValidatorForm.addValidationRule("isColorNameUnique", value =>
       colorsArr.every(
@@ -97,6 +123,7 @@ export const CreatePalette = ({ saveNewPalette, palettes }: ICreatePalette) => {
       <CssBaseline />
       <AppBar
         position="fixed"
+        color="default"
         className={clsx(classes.appBar, {
           [classes.appBarShift]: open,
         })}
@@ -147,8 +174,8 @@ export const CreatePalette = ({ saveNewPalette, palettes }: ICreatePalette) => {
         <div className={classes.container}>
           <Typography variant="h4" noWrap>Design your palette</Typography>
           <div className={classes.button}>
-            <Button variant="contained" color="secondary">Clear Palette</Button>
-            <Button variant="contained" color="primary">Random Colour</Button>
+            <Button variant="contained" color="secondary" onClick={handleClearColors}>Clear Palette</Button>
+            <Button variant="contained" color="primary" onClick={handleAddRandomColor} disabled={isPaletteFull}>Random Colour</Button>
           </div>
           <ChromePicker color={currentColor} onChangeComplete={(newColor) => handleChangeColor(newColor)} />
           <ValidatorForm
@@ -168,10 +195,11 @@ export const CreatePalette = ({ saveNewPalette, palettes }: ICreatePalette) => {
               variant="contained"
               color="primary"
               type="submit"
-              style={{ backgroundColor: currentColor }}
+              disabled={isPaletteFull}
+              style={{ backgroundColor: isPaletteFull ? "grey" : currentColor }}
             >
-              Add Colour
-          </Button>
+              {isPaletteFull ? "Palette Full" : "Add Colour"}
+            </Button>
           </ValidatorForm>
 
           <Divider />
@@ -183,9 +211,11 @@ export const CreatePalette = ({ saveNewPalette, palettes }: ICreatePalette) => {
         })}
       >
         <div className={classes.drawerHeader} />
-        <ul>{colorsArr.map(color => (
-          <DraggableColorBox color={color.color} name={color.name} />
-        ))}</ul>
+        <DraggableColorList
+          colorsArr={colorsArr}
+          handleDeleteClick={handleDeleteClick}
+          axis="xy"
+          onSortEnd={onSortEnd} />
       </main>
     </div>
   );

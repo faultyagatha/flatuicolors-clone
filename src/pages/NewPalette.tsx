@@ -18,7 +18,8 @@ export const NewPalette = () => {
     <>
       <CreatePalette
         saveNewPalette={(newPalette: any) => saveNewPalette(newPalette)}
-        palettes={palettes} />
+        palettes={palettes}
+        maxColors={20} />
     </>
   )
 }
