@@ -1,15 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useHistory, Link } from 'react-router-dom';
+import { useTheme } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import Typography from "@material-ui/core/Typography";
 import Button from '@material-ui/core/Button';
-import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
+
 import { useStyles } from './useStyles';
 import { IPalette } from '../../types';
+import { PaletteDialog } from '../PaletteDialog';
 
 interface ICreatePaletteNav {
   open: boolean;
@@ -23,33 +26,29 @@ interface ICreatePaletteNav {
 }
 
 export const CreatePaletteNav = ({ open, colorsArr, saveNewPalette, palettes, handleDrawerOpen }: ICreatePaletteNav) => {
-  const classes = useStyles();
+  const theme = useTheme();
+  const classes = useStyles(theme);
   const history = useHistory();
-  const [paletteName, setPaletteName] = useState('my-palette');
+  const [showForm, setShowForm] = useState(false);
 
-  const handleChangePaletteName = (e: any) => {
-    setPaletteName(e.target.value);
-  };
-
-  const handleSavePalette = () => {
+  const handleSavePalette = (paletteName: string) => {
     const newPalette = {
       paletteName: paletteName,
       id: paletteName.toLowerCase().replace(/ /g, "-"),
       colors: colorsArr
     }
     saveNewPalette(newPalette);
-    // console.log(newPalette);
+    console.log(newPalette);
     history.push("/");
   };
 
-  useEffect(() => {
-    ValidatorForm.addValidationRule("isPaletteNameUnique", value =>
-      palettes.every(({ paletteName }: any) => paletteName.toLowerCase() !== value.toLowerCase())
-    );
-  }, [colorsArr, paletteName, palettes])
+  const handleShowForm = () => {
+    setShowForm(true);
+    console.log(showForm)
+  }
 
   return (
-    <div>
+    <div className={classes.root}>
       <CssBaseline />
       <AppBar
         position="fixed"
@@ -58,7 +57,7 @@ export const CreatePaletteNav = ({ open, colorsArr, saveNewPalette, palettes, ha
           [classes.appBarShift]: open,
         })}
       >
-        <Toolbar>
+        <Toolbar disableGutters={!open}>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -68,25 +67,33 @@ export const CreatePaletteNav = ({ open, colorsArr, saveNewPalette, palettes, ha
           >
             <MenuIcon />
           </IconButton>
-          <ValidatorForm onSubmit={handleSavePalette}>
-            <TextValidator
-              value={paletteName}
-              name="paletteName"
-              label="Palette Name"
-              onChange={handleChangePaletteName}
-              validators={["required", "isPaletteNameUnique"]}
-              errorMessages={["Enter Palette Name", "Name is already taken"]} />
+          <Typography variant='h6' color='inherit' noWrap>
+            Create Your Palette
+          </Typography>
+        </Toolbar>
+        <div className={classes.navBtns}>
+          <Link to="/">
             <Button
               variant="contained"
               color="secondary"
-              type="submit"
+              className={classes.button}
             >
-              Save Palette
-          </Button>
-            <Link to="/"><Button variant="contained" color="secondary">Go Back</Button></Link>
-          </ValidatorForm>
-        </Toolbar>
+              Go Back
+              </Button>
+          </Link>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={handleShowForm}
+            className={classes.button}
+          >
+            Save
+              </Button>
+        </div>
       </AppBar>
+      {showForm && (
+        <PaletteDialog palettes={palettes} handleSavePalette={handleSavePalette} />
+      )}
     </div>
   )
 }

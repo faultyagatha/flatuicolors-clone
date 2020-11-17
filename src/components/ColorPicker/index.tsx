@@ -3,6 +3,8 @@ import Button from '@material-ui/core/Button';
 import { ChromePicker, ColorResult } from 'react-color';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 
+import { useStyles } from './useStyles';
+
 interface IColorPicker {
   isPaletteFull: boolean;
   handleAddColor: (currentColor: string, colorName: string) => void;
@@ -13,6 +15,7 @@ interface IColorPicker {
 }
 
 export const ColorPicker = ({ isPaletteFull, handleAddColor, colorsArr }: IColorPicker) => {
+  const classes = useStyles();
   const [currentColor, setCurrentColor] = useState('purple');
   const [colorName, setColorName] = useState('');
 
@@ -37,13 +40,21 @@ export const ColorPicker = ({ isPaletteFull, handleAddColor, colorsArr }: IColor
 
   return (
     <div>
-      <ChromePicker color={currentColor} onChangeComplete={(newColor) => handleChangeColor(newColor)} />
+      <ChromePicker
+        className={classes.picker}
+        color={currentColor}
+        onChangeComplete={(newColor) => handleChangeColor(newColor)} />
       <ValidatorForm
+        className={classes.colorNameInput}
         onSubmit={() => handleAddColor(currentColor, colorName)}
         onError={errors => console.log(errors)}>
         <TextValidator
           value={colorName}
           name="colorName"
+          className={classes.colorNameInput}
+          placeholder='Color Name'
+          variant='filled'
+          margin='normal'
           onChange={e => handleChangeColorName(e)}
           validators={["required", "isColorNameUnique", "isColorUnique"]}
           errorMessages={[
@@ -52,6 +63,7 @@ export const ColorPicker = ({ isPaletteFull, handleAddColor, colorsArr }: IColor
             "Color already used!"
           ]} />
         <Button
+          className={classes.addColor}
           variant="contained"
           color="primary"
           type="submit"

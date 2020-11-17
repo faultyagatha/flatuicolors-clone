@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import clsx from 'clsx';
 import { useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -25,8 +25,8 @@ interface ICreatePalette {
 
 //TODO: clean up the input field
 export const CreatePalette = ({ saveNewPalette, palettes, maxColors }: ICreatePalette) => {
-  const classes = useStyles();
   const theme = useTheme();
+  const classes = useStyles(theme);
   const [open, setOpen] = useState(false);
   const [colorsArr, setColorsArr] = useState(palettes[0].colors)//useState([{ color: 'purple', name: 'purple' }]);
 
@@ -97,10 +97,25 @@ export const CreatePalette = ({ saveNewPalette, palettes, maxColors }: ICreatePa
         </div>
         <Divider />
         <div className={classes.container}>
-          <Typography variant="h4" noWrap>Design your palette</Typography>
-          <div className={classes.button}>
-            <Button variant="contained" color="secondary" onClick={handleClearColors}>Clear Palette</Button>
-            <Button variant="contained" color="primary" onClick={handleAddRandomColor} disabled={isPaletteFull}>Random Colour</Button>
+          <Typography variant="h4" gutterBottom>Design your palette</Typography>
+          <div className={classes.buttons}>
+            <Button
+              className={classes.button}
+              variant="contained"
+              color="secondary"
+              onClick={handleClearColors}
+            >
+              Clear Palette
+              </Button>
+            <Button
+              className={classes.button}
+              variant="contained"
+              color="primary"
+              onClick={handleAddRandomColor}
+              disabled={isPaletteFull}
+            >
+              Random Colour
+              </Button>
           </div>
           <ColorPicker
             isPaletteFull={isPaletteFull}

@@ -6,33 +6,15 @@ export const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
   },
-  appBar: {
-    transition: theme.transitions.create(['margin', 'width'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-  },
-  appBarShift: {
-    width: `calc(100% - ${drawerWidth}px)`,
-    marginLeft: drawerWidth,
-    transition: theme.transitions.create(['margin', 'width'], {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  },
-  menuButton: {
-    marginLeft: 12,
-    marginRight: 20
-  },
-  hide: {
-    display: 'none',
-  },
   drawer: {
     width: drawerWidth,
     flexShrink: 0,
+    height: "100vh"
   },
   drawerPaper: {
     width: drawerWidth,
+    display: "flex",
+    alignItems: "center"
   },
   drawerHeader: {
     display: 'flex',
@@ -67,7 +49,10 @@ export const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     alignItems: "center"
   },
+  buttons: {
+    width: "100%"
+  },
   button: {
-
+    width: "50%"
   }
 }));
