@@ -71,7 +71,7 @@ export const CreatePaletteNav = ({ open, colorsArr, saveNewPalette, palettes, ha
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant='h6' color='inherit' noWrap>
+          <Typography className={classes.title} variant='h6' color='inherit' noWrap>
             Create Your Palette
           </Typography>
         </Toolbar>
@@ -82,7 +82,7 @@ export const CreatePaletteNav = ({ open, colorsArr, saveNewPalette, palettes, ha
               color="secondary"
               className={classes.button}
             >
-              Go Back
+              Back
               </Button>
           </Link>
           <Button

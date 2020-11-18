@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 import { IPaletteList } from '../../types';
 import { MiniPalette } from '../MiniPalette';
+import { ConfirmDialog } from '../ConfirmDialog';
 import { useStyles } from './useStyles';
 
 export const PaletteList = (props: IPaletteList) => {
@@ -18,18 +20,24 @@ export const PaletteList = (props: IPaletteList) => {
     <div className={classes.root} >
       <div className={classes.container}>
         <nav className={classes.nav}>
-          <h1>React Colors</h1>
-          <Link to='/palette/new'>Create Palette</Link>
+          <h1 className={classes.title}>React Colors</h1>
+          <Link to='/palette/new'>CREATE PALETTE</Link>
         </nav>
-        <div className={classes.palettes}>
+        <TransitionGroup className={classes.palettes}>
           {seedPalettes.map(palette => (
-            <MiniPalette
+            <CSSTransition
               key={palette.paletteName}
-              {...palette}
-              handlePaletteClick={() => goToPalette(palette.id)} />
+              classNames="fade"
+              timeout={500}>
+              <MiniPalette
+                key={palette.paletteName}
+                {...palette}
+                handlePaletteClick={() => goToPalette(palette.id)} />
+            </CSSTransition>
           ))}
-        </div>
+        </TransitionGroup>
       </div>
+      <ConfirmDialog />
     </div>
   )
 };

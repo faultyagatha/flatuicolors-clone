@@ -1,8 +1,7 @@
-import { findPalette, generatePalette } from '../../helpers';
+import { generatePalette } from '../../helpers';
 import { seedPalette } from '../../seed';
 import {
   SAVE_PALETTE,
-  FIND_PALETTE,
   GENERATE_PALETTE,
   DELETE_PALETTE,
   paletteActions
@@ -15,13 +14,6 @@ export const savePalette = (newPalette: any): paletteActions => {
   }
 };
 
-export const findPaletteById = (id: string): paletteActions => {
-  return {
-    type: FIND_PALETTE,
-    payload: { palette: findPalette(id) }
-  }
-};
-
 export const generateFromSeed = (palette: any): paletteActions => {
   return {
     type: GENERATE_PALETTE,
@@ -29,9 +21,9 @@ export const generateFromSeed = (palette: any): paletteActions => {
   }
 };
 
-export const deletePalette = (palette: any): paletteActions => {
+export const deletePalette = (id: string): paletteActions => {
   return {
     type: DELETE_PALETTE,
-    payload: { palette }
+    payload: { id }
   }
 }

@@ -46,5 +46,10 @@ export const useStyles = makeStyles((theme) => ({
       margin: "0 0.2rem",
       padding: "0.3rem"
     }
+  },
+  title: {
+    [BREAKPOINTS.down("xs")]: {
+      display: "none"
+    }
   }
 }));

@@ -3,7 +3,6 @@ import { makeStyles } from "@material-ui/styles";
 export const useStyles = makeStyles({
   root: {
     backgroundColor: "white",
-    // border: "1px solid black",
     borderRadius: "5px",
     padding: "0.5rem",
     position: "relative",
@@ -44,8 +43,9 @@ export const useStyles = makeStyles({
     marginBottom: "-3.5px"
   },
   deleteIcon: {
-    color: 'olive',//"rgba(255, 255, 255, 0.5",
-    transition: "all 0.3s ease-in-out",
+    background: "white",
+    color: 'olive',
+    transition: "all 0.2s ease-in-out",
     width: "20px",
     height: "20px",
     position: "absolute",

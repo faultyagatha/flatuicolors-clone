@@ -4,7 +4,6 @@ import { seedPalette } from '../../seed';
 
 import {
   SAVE_PALETTE,
-  FIND_PALETTE,
   GENERATE_PALETTE,
   DELETE_PALETTE,
   paletteActions,
@@ -20,10 +19,6 @@ function palette(
   action: paletteActions
 ): PaletteState {
   switch (action.type) {
-    // case FIND_PALETTE: {
-    //   const { palette } = action.payload;
-    //   return { palettes: [...state.palettes, palette] }
-    // }
     case SAVE_PALETTE: {
       const { palette } = action.payload;
       return { palettes: [...state.palettes, palette] };
@@ -33,8 +28,9 @@ function palette(
       return { palettes: [...state.palettes, palette] };
     }
     case DELETE_PALETTE: {
-      const { palette } = action.payload;
-      return { palettes: [] }
+      const { id } = action.payload;
+      const updatedPalettes = [...state.palettes].filter(p => p.id !== id);
+      return { palettes: updatedPalettes }
     }
     default:
       return state;
