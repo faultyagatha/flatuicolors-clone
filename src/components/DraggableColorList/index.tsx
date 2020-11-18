@@ -11,7 +11,7 @@ interface IDraggableColorList {
   handleDeleteClick(name: string): void;
 };
 
-//TODO: fix remove color
+//TODO: fix remove color 
 export const DraggableColorList = SortableContainer(({ colorsArr, handleDeleteClick }: IDraggableColorList) => {
   return (
     <div style={{ height: "100%" }}>

@@ -1,21 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import Button from '@material-ui/core/Button';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
-import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
+import { Picker } from 'emoji-mart';
+import "emoji-mart/css/emoji-mart.css";
 
 import { IPalette } from '../../types';
 
 interface IPaletteDialog {
   palettes: IPalette[];
   handleSavePalette: (paletteName: string) => void;
+  handleHideForm: () => void;
 }
 
-export const PaletteDialog = ({ palettes, handleSavePalette }: IPaletteDialog) => {
+export const PaletteDialog = ({ palettes, handleSavePalette, handleHideForm }: IPaletteDialog) => {
   const [open, setOpen] = useState(true);
   const [paletteName, setPaletteName] = useState('my-palette');
 
@@ -48,7 +50,7 @@ export const PaletteDialog = ({ palettes, handleSavePalette }: IPaletteDialog) =
         </Button>
       <Dialog
         open={open}
-        onClose={handleCloseDialog}
+        onClose={handleHideForm}
         aria-labelledby='form-dialog-title'
       >
         <DialogTitle id='form-dialog-title'>Choose a Palette Name</DialogTitle>
@@ -57,6 +59,7 @@ export const PaletteDialog = ({ palettes, handleSavePalette }: IPaletteDialog) =
             <DialogContentText>
               Enter a unique name for your new palette.
             </DialogContentText>
+            {/* <Picker /> */}
             <TextValidator
               value={paletteName}
               name="paletteName"
@@ -67,7 +70,7 @@ export const PaletteDialog = ({ palettes, handleSavePalette }: IPaletteDialog) =
             />
           </DialogContent>
           <DialogActions>
-            <Button onClick={handleCloseDialog} color='primary'>
+            <Button onClick={handleHideForm} color='primary'>
               Cancel
             </Button>
             <Button variant='contained' color='primary' type='submit'>

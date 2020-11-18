@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-const drawerWidth = 400;
+import { DRAWER_WIDTH } from '../../constants';
 
 export const useStyles = makeStyles((theme) => ({
   root: {
@@ -17,8 +17,8 @@ export const useStyles = makeStyles((theme) => ({
     height: "64px"
   },
   appBarShift: {
-    width: `calc(100% - ${drawerWidth}px)`,
-    marginLeft: drawerWidth,
+    width: `calc(100% - ${DRAWER_WIDTH}px)`,
+    marginLeft: DRAWER_WIDTH,
     transition: theme.transitions.create(['margin', 'width'], {
       easing: theme.transitions.easing.easeOut,
       duration: theme.transitions.duration.enteringScreen,

@@ -4,6 +4,7 @@ import {
   SAVE_PALETTE,
   FIND_PALETTE,
   GENERATE_PALETTE,
+  DELETE_PALETTE,
   paletteActions
 } from '../../types';
 
@@ -25,5 +26,12 @@ export const generateFromSeed = (palette: any): paletteActions => {
   return {
     type: GENERATE_PALETTE,
     payload: { palette: generatePalette(palette) }
+  }
+};
+
+export const deletePalette = (palette: any): paletteActions => {
+  return {
+    type: DELETE_PALETTE,
+    payload: { palette }
   }
 }

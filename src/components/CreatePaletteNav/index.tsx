@@ -38,12 +38,16 @@ export const CreatePaletteNav = ({ open, colorsArr, saveNewPalette, palettes, ha
       colors: colorsArr
     }
     saveNewPalette(newPalette);
-    console.log(newPalette);
+    // console.log(newPalette);
     history.push("/");
   };
 
   const handleShowForm = () => {
     setShowForm(true);
+  }
+
+  const handleHideForm = () => {
+    setShowForm(false);
     console.log(showForm)
   }
 
@@ -92,7 +96,11 @@ export const CreatePaletteNav = ({ open, colorsArr, saveNewPalette, palettes, ha
         </div>
       </AppBar>
       {showForm && (
-        <PaletteDialog palettes={palettes} handleSavePalette={handleSavePalette} />
+        <PaletteDialog
+          palettes={palettes}
+          handleSavePalette={handleSavePalette}
+          handleHideForm={handleHideForm}
+        />
       )}
     </div>
   )

@@ -6,6 +6,7 @@ import {
   SAVE_PALETTE,
   FIND_PALETTE,
   GENERATE_PALETTE,
+  DELETE_PALETTE,
   paletteActions,
   PaletteState
 } from '../../types';
@@ -30,6 +31,10 @@ function palette(
     case GENERATE_PALETTE: {
       const { palette } = action.payload;
       return { palettes: [...state.palettes, palette] };
+    }
+    case DELETE_PALETTE: {
+      const { palette } = action.payload;
+      return { palettes: [] }
     }
     default:
       return state;
