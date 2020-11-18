@@ -1,6 +1,8 @@
 import { makeStyles } from "@material-ui/styles";
 import chroma from 'chroma-js';
 
+import { BREAKPOINTS } from '../../constants';
+
 export const useStyles = makeStyles({
   colorBox: {
     width: "20%",
@@ -12,6 +14,21 @@ export const useStyles = makeStyles({
     marginBottom: "-3.5px",
     "&:hover button": {
       opacity: 1
+    },
+    [BREAKPOINTS.down("lg")]: {
+      width: "25%",
+      height: (props: any) =>
+        (props.showingFullPalette ? "20%" : "33.3333%")
+    },
+    [BREAKPOINTS.down("md")]: {
+      width: "50%",
+      height: (props: any) =>
+        (props.showingFullPalette ? "10%" : "20%")
+    },
+    [BREAKPOINTS.down("xs")]: {
+      width: "100%",
+      height: (props: any) =>
+        (props.showingFullPalette ? "5%" : "10%")
     }
   },
   copyText: {
@@ -104,7 +121,10 @@ export const useStyles = makeStyles({
       textAlign: "center",
       marginBottom: "0",
       padding: "1rem",
-      textTransform: "uppercase"
+      textTransform: "uppercase",
+      [BREAKPOINTS.down("xs")]: {
+        fontSize: "6rem"
+      }
     },
     "& p": {
       fontSize: "2rem",

@@ -17,7 +17,7 @@ export const DraggableColorBox = SortableElement(({ color, name, handleDeleteCli
       className={classes.root}
       style={{ backgroundColor: color }}
     >
-      <div className={classes.boxContent}>
+      <div className={classes.content}>
         <span>{name}</span>
         <DeleteOutlinedIcon
           className={classes.deleteIcon}

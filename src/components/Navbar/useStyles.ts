@@ -1,5 +1,7 @@
 import { makeStyles } from "@material-ui/styles";
 
+import { BREAKPOINTS } from '../../constants';
+
 export const useStyles = makeStyles({
   navbar: {
     display: "flex",
@@ -18,6 +20,9 @@ export const useStyles = makeStyles({
     "& a": {
       textDecoration: "none",
       color: "gray",
+    },
+    [BREAKPOINTS.down("xs")]: {
+      display: "none"
     }
   },
   selectContainer: {
@@ -43,6 +48,9 @@ export const useStyles = makeStyles({
       height: "14px",
       marginLeft: "-7px",
       marginTop: "-3px"
+    },
+    [BREAKPOINTS.down("md")]: {
+      width: "150px"
     }
   }
 });

@@ -1,5 +1,7 @@
 import { makeStyles } from '@material-ui/styles';
 
+import { BREAKPOINTS } from '../../constants';
+
 export const useStyles = makeStyles({
   root: {
     width: "20%",
@@ -13,9 +15,21 @@ export const useStyles = makeStyles({
     "&:hover svg": {
       color: "white",
       transform: "scale(1.5)"
+    },
+    [BREAKPOINTS.down("lg")]: {
+      width: "25%",
+      height: "33.3333%"
+    },
+    [BREAKPOINTS.down("md")]: {
+      width: "50%",
+      height: "20%"
+    },
+    [BREAKPOINTS.down("xs")]: {
+      width: "100%",
+      height: "10%"
     }
   },
-  boxContent: {
+  content: {
     position: "absolute",
     width: "100%",
     left: "0px",

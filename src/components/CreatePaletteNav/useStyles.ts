@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-import { DRAWER_WIDTH } from '../../constants';
+import { DRAWER_WIDTH, BREAKPOINTS } from '../../constants';
 
 export const useStyles = makeStyles((theme) => ({
   root: {
@@ -35,9 +35,16 @@ export const useStyles = makeStyles((theme) => ({
     marginRight: "1rem",
     "& a": {
       textDecoration: "none"
+    },
+    [BREAKPOINTS.down("xs")]: {
+      marginRight: "0.5rem"
     }
   },
   button: {
-    margin: "0 0.5rem"
+    margin: "0 0.5rem",
+    [BREAKPOINTS.down("xs")]: {
+      margin: "0 0.2rem",
+      padding: "0.3rem"
+    }
   }
 }));

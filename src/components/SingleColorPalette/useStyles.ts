@@ -1,9 +1,11 @@
 import { makeStyles } from "@material-ui/styles";
 
+import { BREAKPOINTS } from '../../constants';
+
 export const useStyles = makeStyles({
   palette: {
     height: "100vh",
-    // display: "flex",
+    display: "flex",
     flexDirection: "column"
   },
   colors: {
@@ -30,6 +32,18 @@ export const useStyles = makeStyles({
     lineHeight: "30px",
     textTransform: "uppercase",
     border: "none",
-    textDecoration: "none"
+    textDecoration: "none",
+    [BREAKPOINTS.down("lg")]: {
+      width: "25%",
+      height: "33.3333%"
+    },
+    [BREAKPOINTS.down("md")]: {
+      width: "50%",
+      height: "20%"
+    },
+    [BREAKPOINTS.down("xs")]: {
+      width: "100%",
+      height: "10%"
+    }
   }
 })
