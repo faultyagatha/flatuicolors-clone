@@ -12,7 +12,7 @@ const store = makeStore();
 
 store.subscribe(() => {
   saveState({
-    allPalettes: store.getState()
+    palette: store.getState().palette
   });
 });
 

@@ -6,8 +6,9 @@ import { useStyles } from './useStyles';
 import { IDraggableColorBox } from '../../types/app';
 
 
-export const DraggableColorBox = SortableElement(({ color, name, handleDeleteClick }: IDraggableColorBox) => {
-  const classes = useStyles();
+export const DraggableColorBox = SortableElement((props: IDraggableColorBox) => {
+  const { color, name, handleDeleteClick } = props;
+  const classes = useStyles(props);
   return (
     <div
       className={classes.root}

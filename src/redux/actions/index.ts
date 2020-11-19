@@ -1,5 +1,6 @@
+import { Dispatch } from "redux";
+
 import { generatePalette } from '../../helpers';
-import { seedPalette } from '../../seed';
 import {
   SAVE_PALETTE,
   GENERATE_PALETTE,
@@ -21,9 +22,17 @@ export const generateFromSeed = (palette: any): paletteActions => {
   }
 };
 
-export const deletePalette = (id: string): paletteActions => {
+const deletePaletteAction = (id: string): paletteActions => {
   return {
     type: DELETE_PALETTE,
     payload: { id }
   }
 }
+
+/** thunk */
+export const deletePalette = (id: string): any => {
+  return async (dispatch: Dispatch, getState: any) => {
+    localStorage.removeItem(getState().palette);
+    dispatch(deletePaletteAction(id));
+  }
+};

@@ -1,4 +1,5 @@
-import { createStore } from 'redux';
+import { createStore, compose, applyMiddleware } from 'redux';
+import thunk from "redux-thunk";
 
 import { rootReducer, RootState } from './reducers';
 import { seedPalette } from '../seed';
@@ -31,14 +32,13 @@ export const saveState = (state: any) => {
 };
 
 export const makeStore = (initialState = loadState()) => {
-
-  // const savedStore = localStorage.getItem('store') || ''
-  // if (savedStore) initialState = JSON.parse(savedStore)
+  console.log(initialState);
+  const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
   const store = createStore(
     rootReducer,
     initialState,
-    (window as any).__REDUX_DEVTOOLS_EXTENSION__ && (window as any).__REDUX_DEVTOOLS_EXTENSION__()
+    composeEnhancers(applyMiddleware(thunk))
   );
   return store;
 }

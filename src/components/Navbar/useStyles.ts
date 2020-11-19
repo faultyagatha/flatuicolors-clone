@@ -49,7 +49,7 @@ export const useStyles = makeStyles({
       marginLeft: "-7px",
       marginTop: "-3px"
     },
-    [BREAKPOINTS.down("md")]: {
+    [BREAKPOINTS.down("sm")]: {
       width: "150px"
     }
   }

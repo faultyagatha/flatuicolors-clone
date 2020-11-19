@@ -39,7 +39,9 @@ export const ColorPicker = ({ isPaletteFull, handleAddColor, colorsArr }: IColor
       <ValidatorForm
         className={classes.colorNameInput}
         onSubmit={() => handleAddColor(currentColor, colorName)}
-        onError={errors => console.log(errors)}>
+        onError={errors => console.log(errors)}
+        instantValidate={false}
+      >
         <TextValidator
           value={colorName}
           name="colorName"

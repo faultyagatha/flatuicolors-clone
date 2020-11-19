@@ -1,4 +1,5 @@
 import { makeStyles } from '@material-ui/styles';
+import chroma from 'chroma-js';
 
 import { BREAKPOINTS } from '../../constants';
 
@@ -13,7 +14,10 @@ export const useStyles = makeStyles({
     // textTransform: "uppercase",
     // marginBottom: "-3.5px",
     "&:hover svg": {
-      color: "white",
+      color: (props: any) =>
+        chroma(props.color).luminance() >= 0.7
+          ? "rgba(255,255,255,0.8)"
+          : "rgba(0,0,0,0.6)",
       transform: "scale(1.5)"
     },
     [BREAKPOINTS.down("lg")]: {
