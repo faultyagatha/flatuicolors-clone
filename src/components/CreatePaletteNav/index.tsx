@@ -11,25 +11,22 @@ import Typography from "@material-ui/core/Typography";
 import Button from '@material-ui/core/Button';
 
 import { useStyles } from './useStyles';
-import { IPalette } from '../../types';
+import { ICreatePaletteNav } from '../../types';
 import { PaletteDialog } from '../PaletteDialog';
 
-interface ICreatePaletteNav {
-  open: boolean;
-  colorsArr: {
-    name: string;
-    color: string;
-  }[];
-  saveNewPalette: (newPalette: any) => void;
-  palettes: IPalette[];
-  handleDrawerOpen: () => void;
-}
 
-export const CreatePaletteNav = ({ open, colorsArr, saveNewPalette, palettes, handleDrawerOpen }: ICreatePaletteNav) => {
+
+export const CreatePaletteNav = ({
+  open,
+  colorsArr,
+  saveNewPalette,
+  palettes,
+  handleDrawerOpen
+}: ICreatePaletteNav) => {
   const theme = useTheme();
   const classes = useStyles(theme);
   const history = useHistory();
-  const [showForm, setShowForm] = useState(false);
+  const [dialogOpen, setDialogOpen] = useState(false);
 
   const handleSavePalette = (paletteName: string) => {
     const newPalette = {
@@ -38,17 +35,15 @@ export const CreatePaletteNav = ({ open, colorsArr, saveNewPalette, palettes, ha
       colors: colorsArr
     }
     saveNewPalette(newPalette);
-    // console.log(newPalette);
     history.push("/");
   };
 
-  const handleShowForm = () => {
-    setShowForm(true);
+  const handleDialogOpen = () => {
+    setDialogOpen(true);
   }
 
-  const handleHideForm = () => {
-    setShowForm(false);
-    console.log(showForm)
+  const handleHideDialog = () => {
+    setDialogOpen(false);
   }
 
   return (
@@ -72,7 +67,7 @@ export const CreatePaletteNav = ({ open, colorsArr, saveNewPalette, palettes, ha
             <MenuIcon />
           </IconButton>
           <Typography className={classes.title} variant='h6' color='inherit' noWrap>
-            Create Your Palette
+            CREATE YOUR PALETTE
           </Typography>
         </Toolbar>
         <div className={classes.navBtns}>
@@ -88,18 +83,19 @@ export const CreatePaletteNav = ({ open, colorsArr, saveNewPalette, palettes, ha
           <Button
             variant="contained"
             color="primary"
-            onClick={handleShowForm}
+            onClick={handleDialogOpen}
             className={classes.button}
           >
             Save
               </Button>
         </div>
       </AppBar>
-      {showForm && (
+      {dialogOpen && (
         <PaletteDialog
           palettes={palettes}
           handleSavePalette={handleSavePalette}
-          handleHideForm={handleHideForm}
+          handleHideDialog={handleHideDialog}
+          dialogOpen={dialogOpen}
         />
       )}
     </div>

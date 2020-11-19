@@ -14,8 +14,6 @@ export const SingleColorPalette = ({ colorId, palette }: ISingleColorPalette) =>
   const classes = useStyles();
 
   const shades = getShades(palette, colorId);
-  console.log('PALETTE: ', palette);
-  console.log('SHADES: ', shades);
 
   const handleFormatChange = (value: any) => {
     setFormat(value);

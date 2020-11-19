@@ -49,19 +49,66 @@ export interface ISingleColorPalette {
   palette: IGeneratePalette;
 }
 
-export interface IColouBoxProps {
+export interface IColouBox {
   background: string;
   name: string;
   colorId: string;
   paletteId: string;
   showLink: boolean;
   showFullPalette: boolean;
-  classes?: any;
+  classes?: unknown;
 };
 
 export interface IFooter {
   paletteName: string;
   emoji: string;
-}
+};
+
+export interface IPaletteDialog {
+  palettes: IPalette[];
+  handleSavePalette: (paletteName: string) => void;
+  handleHideDialog: () => void;
+  dialogOpen: boolean;
+};
+
+export interface IColorPicker {
+  isPaletteFull: boolean;
+  handleAddColor: (currentColor: string, colorName: string) => void;
+  colorsArr: {
+    name: string;
+    color: string;
+  }[];
+};
+
+export interface ICreatePalette {
+  saveNewPalette(newPalette: unknown): void;
+  palettes: IPalette[];
+  maxColors: number;
+};
+
+export interface ICreatePaletteNav {
+  open: boolean;
+  colorsArr: {
+    name: string;
+    color: string;
+  }[];
+  saveNewPalette: (newPalette: any) => void;
+  palettes: IPalette[];
+  handleDrawerOpen: () => void;
+};
+
+export interface IDraggableColorBox {
+  color: string;
+  name: string;
+  handleDeleteClick(): void
+};
+
+export interface IDraggableColorList {
+  colorsArr: {
+    color: string;
+    name: string;
+  }[];
+  handleDeleteClick(name: string): void;
+};
 
 

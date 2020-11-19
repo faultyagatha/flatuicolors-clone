@@ -6,8 +6,13 @@ import { IMiniPalette } from '../../types';
 import { deletePalette } from '../../redux/actions';
 import { useStyles } from './useStyles';
 
-export const MiniPalette = (props: IMiniPalette) => {
-  const { paletteName, id, emoji, colors, handlePaletteClick } = props;
+export const MiniPalette = ({
+  paletteName,
+  id,
+  emoji,
+  colors,
+  handlePaletteClick
+}: IMiniPalette) => {
   const classes = useStyles();
   const dispatch = useDispatch();
 

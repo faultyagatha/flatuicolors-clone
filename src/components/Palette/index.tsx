@@ -6,12 +6,10 @@ import { Footer } from '../Footer';
 import { IGeneratePalette } from '../../types';
 import { useStyles } from './useStyles';
 
-export const Palette = (palette: IGeneratePalette) => {
+export const Palette = ({ colors, paletteName, emoji, id }: IGeneratePalette) => {
+  const classes = useStyles();
   const [level, setLevel] = useState(500);
   const [format, setFormat] = useState('hex');
-
-  const classes = useStyles();
-  const { colors, paletteName, emoji, id } = palette;
 
   const handleLevelChange = (newLevel: number) => {
     setLevel(newLevel);

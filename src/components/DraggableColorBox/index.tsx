@@ -3,12 +3,8 @@ import DeleteOutlinedIcon from '@material-ui/icons/DeleteOutlined';
 import { SortableElement } from 'react-sortable-hoc';
 
 import { useStyles } from './useStyles';
+import { IDraggableColorBox } from '../../types/app';
 
-interface IDraggableColorBox {
-  color: string;
-  name: string;
-  handleDeleteClick(): void
-};
 
 export const DraggableColorBox = SortableElement(({ color, name, handleDeleteClick }: IDraggableColorBox) => {
   const classes = useStyles();

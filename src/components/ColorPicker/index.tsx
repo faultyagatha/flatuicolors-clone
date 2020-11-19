@@ -4,15 +4,7 @@ import { ChromePicker, ColorResult } from 'react-color';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 
 import { useStyles } from './useStyles';
-
-interface IColorPicker {
-  isPaletteFull: boolean;
-  handleAddColor: (currentColor: string, colorName: string) => void;
-  colorsArr: {
-    name: string;
-    color: string;
-  }[];
-}
+import { IColorPicker } from '../../types/app';
 
 export const ColorPicker = ({ isPaletteFull, handleAddColor, colorsArr }: IColorPicker) => {
   const classes = useStyles();
@@ -39,7 +31,7 @@ export const ColorPicker = ({ isPaletteFull, handleAddColor, colorsArr }: IColor
   }, [colorsArr, currentColor, colorName])
 
   return (
-    <div>
+    <div className={classes.root}>
       <ChromePicker
         className={classes.picker}
         color={currentColor}
@@ -51,8 +43,8 @@ export const ColorPicker = ({ isPaletteFull, handleAddColor, colorsArr }: IColor
         <TextValidator
           value={colorName}
           name="colorName"
-          className={classes.colorNameInput}
-          placeholder='Color Name'
+          className={classes.colorNameText}
+          placeholder='COLOUR NAME'
           variant='filled'
           margin='normal'
           onChange={e => handleChangeColorName(e)}

@@ -47,13 +47,13 @@ export const useStyles = makeStyles((theme) => ({
     height: "100%",
     display: "flex",
     flexDirection: "column",
-    justifyContent: "center",
+    justifyContent: "top",
     alignItems: "center"
   },
-  buttons: {
-    width: "100%"
-  },
   button: {
-    width: "50%"
+    width: "50%",
+    padding: "1rem",
+    marginTop: "1rem",
+    fontSize: "0.9rem"
   }
 }));

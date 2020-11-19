@@ -12,10 +12,15 @@ import 'rc-slider/assets/index.css';
 import { INavbar } from '../../types';
 import { useStyles } from './useStyles';
 
-export const Navbar = ({ level, isSingleColor, handleLevelChange, handleSelectChange }: INavbar) => {
+export const Navbar = ({
+  level,
+  isSingleColor,
+  handleLevelChange,
+  handleSelectChange
+}: INavbar) => {
+  const classes = useStyles();
   const [format, setFormat] = useState('hex');
   const [isOpen, setIsOpen] = useState(false);
-  const classes = useStyles();
 
   const handleFormatChange = (e: any) => {
     e.preventDefault();

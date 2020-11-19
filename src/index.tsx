@@ -10,11 +10,11 @@ import reportWebVitals from './reportWebVitals';
 
 const store = makeStore();
 
-// store.subscribe(() => {
-//   saveState({
-//     palettes: store.getState()
-//   });
-// });
+store.subscribe(() => {
+  saveState({
+    allPalettes: store.getState()
+  });
+});
 
 const WithProvider = () => {
   return (

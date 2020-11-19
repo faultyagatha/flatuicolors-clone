@@ -6,28 +6,16 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import { Picker } from 'emoji-mart';
-import "emoji-mart/css/emoji-mart.css";
 
-import { IPalette } from '../../types';
+import { IPaletteDialog } from '../../types';
 
-interface IPaletteDialog {
-  palettes: IPalette[];
-  handleSavePalette: (paletteName: string) => void;
-  handleHideForm: () => void;
-}
-
-export const PaletteDialog = ({ palettes, handleSavePalette, handleHideForm }: IPaletteDialog) => {
-  const [open, setOpen] = useState(true);
+export const PaletteDialog = ({
+  palettes,
+  handleSavePalette,
+  handleHideDialog,
+  dialogOpen
+}: IPaletteDialog) => {
   const [paletteName, setPaletteName] = useState('my-palette');
-
-  const handleCloseDialog = () => {
-    setOpen(false);
-  };
-
-  const handleOpenDialog = () => {
-    setOpen(true);
-  };
 
   const handleChangePaletteName = (e: any) => {
     setPaletteName(e.target.value);
@@ -40,20 +28,13 @@ export const PaletteDialog = ({ palettes, handleSavePalette, handleHideForm }: I
   }, [paletteName, palettes])
 
   return (
-    <div>
-      <Button
-        variant='outlined'
-        color='primary'
-        onClick={handleOpenDialog}
-      >
-        Open form dialog
-        </Button>
+    <>
       <Dialog
-        open={open}
-        onClose={handleHideForm}
+        open={dialogOpen}
+        onClose={handleHideDialog}
         aria-labelledby='form-dialog-title'
       >
-        <DialogTitle id='form-dialog-title'>Choose a Palette Name</DialogTitle>
+        <DialogTitle id='form-dialog-title'>CHOOSE A PALETTE NAME</DialogTitle>
         <ValidatorForm onSubmit={() => handleSavePalette(paletteName)}>
           <DialogContent>
             <DialogContentText>
@@ -70,7 +51,7 @@ export const PaletteDialog = ({ palettes, handleSavePalette, handleHideForm }: I
             />
           </DialogContent>
           <DialogActions>
-            <Button onClick={handleHideForm} color='primary'>
+            <Button onClick={handleHideDialog} color='primary'>
               Cancel
             </Button>
             <Button variant='contained' color='primary' type='submit'>
@@ -79,6 +60,6 @@ export const PaletteDialog = ({ palettes, handleSavePalette, handleHideForm }: I
           </DialogActions>
         </ValidatorForm>
       </Dialog>
-    </div>
+    </>
   )
 }

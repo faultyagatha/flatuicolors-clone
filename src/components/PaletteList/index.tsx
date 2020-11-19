@@ -7,10 +7,9 @@ import { MiniPalette } from '../MiniPalette';
 import { ConfirmDialog } from '../ConfirmDialog';
 import { useStyles } from './useStyles';
 
-export const PaletteList = (props: IPaletteList) => {
+export const PaletteList = ({ seedPalettes }: IPaletteList) => {
   const classes = useStyles();
   const history = useHistory();
-  const { seedPalettes } = props;
 
   const goToPalette = (id: string) => {
     history.push(`/palette/${id}`);
@@ -20,7 +19,7 @@ export const PaletteList = (props: IPaletteList) => {
     <div className={classes.root} >
       <div className={classes.container}>
         <nav className={classes.nav}>
-          <h1 className={classes.title}>React Colors</h1>
+          <h1 className={classes.title}>REACT COLORS</h1>
           <Link to='/palette/new'>CREATE PALETTE</Link>
         </nav>
         <TransitionGroup className={classes.palettes}>

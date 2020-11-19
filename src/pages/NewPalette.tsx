@@ -10,7 +10,6 @@ export const NewPalette = () => {
   const { palettes } = useSelector((state: RootState) => state.palette)
 
   const saveNewPalette = (newPalette: any) => {
-    console.log(newPalette);
     dispatch(savePalette(newPalette));
   };
 

@@ -10,15 +10,6 @@ import { seedPalette } from '../seed';
 //   }
 // };
 
-export const makeStore = () => {
-  const store = createStore(
-    rootReducer,
-    // initialState,
-    (window as any).__REDUX_DEVTOOLS_EXTENSION__ && (window as any).__REDUX_DEVTOOLS_EXTENSION__()
-  );
-  return store;
-}
-
 /** state helper functions */
 export const loadState = () => {
   try {
@@ -38,3 +29,16 @@ export const saveState = (state: any) => {
     console.log("Error saving state: ", err);
   }
 };
+
+export const makeStore = (initialState = loadState()) => {
+
+  // const savedStore = localStorage.getItem('store') || ''
+  // if (savedStore) initialState = JSON.parse(savedStore)
+
+  const store = createStore(
+    rootReducer,
+    initialState,
+    (window as any).__REDUX_DEVTOOLS_EXTENSION__ && (window as any).__REDUX_DEVTOOLS_EXTENSION__()
+  );
+  return store;
+}
