@@ -48,8 +48,18 @@ export const useStyles = makeStyles({
     color: "black",
     "& a": {
       color: "black",
-      fontSize: "1.2rem",
+      // fontSize: "1.2rem",
+      textDecoration: "none"
     }
+  },
+  navBtns: {
+    marginRight: "1rem",
+    "& a": {
+      textDecoration: "none"
+    },
+    [BREAKPOINTS.down("xs")]: {
+      marginRight: "0.5rem"
+    },
   },
   palettes: {
     // boxSizing: "border-box",

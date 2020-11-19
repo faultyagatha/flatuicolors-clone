@@ -6,6 +6,7 @@ import {
   SAVE_PALETTE,
   GENERATE_PALETTE,
   DELETE_PALETTE,
+  RESTORE_DEFAULTS,
   paletteActions,
   PaletteState
 } from '../../types';
@@ -31,6 +32,9 @@ function palette(
       const { id } = action.payload;
       const updatedPalettes = [...state.palettes].filter(p => p.id !== id);
       return { palettes: updatedPalettes }
+    }
+    case RESTORE_DEFAULTS: {
+      return initState;
     }
     default:
       return state;

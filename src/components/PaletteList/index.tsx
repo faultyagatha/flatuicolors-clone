@@ -1,13 +1,17 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import Button from '@material-ui/core/Button';
 
 import { IPaletteList } from '../../types';
 import { MiniPalette } from '../MiniPalette';
 import { ConfirmDialog } from '../ConfirmDialog';
+import { restoreDefaults } from '../../redux/actions';
 import { useStyles } from './useStyles';
 
 export const PaletteList = ({ seedPalettes }: IPaletteList) => {
+  const dispatch = useDispatch();
   const classes = useStyles();
   const history = useHistory();
 
@@ -15,12 +19,19 @@ export const PaletteList = ({ seedPalettes }: IPaletteList) => {
     history.push(`/palette/${id}`);
   };
 
+  const handleRestoreDefaults = () => {
+    dispatch(restoreDefaults());
+  }
+
   return (
     <div className={classes.root} >
       <div className={classes.container}>
         <nav className={classes.nav}>
           <h1 className={classes.title}>REACT COLORS</h1>
-          <Link to='/palette/new'>CREATE PALETTE</Link>
+          <div className={classes.navBtns}>
+            <Link to='/palette/new'><Button>CREATE NEW PALETTE</Button></Link>
+            <Button onClick={handleRestoreDefaults}>RESTORE DEFAULTS</Button>
+          </div>
         </nav>
         <TransitionGroup className={classes.palettes}>
           {seedPalettes.map(palette => (
