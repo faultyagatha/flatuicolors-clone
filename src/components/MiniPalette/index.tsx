@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import DeleteOutlinedIcon from '@material-ui/icons/DeleteOutlined';
 
 import { IMiniPalette } from '../../types';
-import { deletePalette } from '../../redux/actions';
+import { deletePalette, openConfDialog, closeConfDialog } from '../../redux/actions';
 import { useStyles } from './useStyles';
 
 export const MiniPalette = ({
@@ -17,9 +17,10 @@ export const MiniPalette = ({
 
   console.log('RENDERING: ', paletteName);
 
-  const handleDeletePalette = (e: any) => {
+  const handleDeleteClick = (e: any) => {
     e.stopPropagation();
-    // dispatch(deletePalette(id));
+    console.log(id);
+    dispatch(openConfDialog(id));
   };
 
   const miniColorBoxes = colors.map(color => {
@@ -36,7 +37,7 @@ export const MiniPalette = ({
       <DeleteOutlinedIcon
         className={classes.deleteIcon}
         style={{ transition: "all 0.2s ease-in-out" }}
-        onClick={handleDeletePalette}
+        onClick={handleDeleteClick}
       />
       <div className={classes.colors}>{miniColorBoxes}</div>
       <h5 className={classes.title}>

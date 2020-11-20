@@ -13,6 +13,8 @@ import {
   DRAWER_CLOSE,
   DIALOG_OPEN,
   DIALOG_CLOSE,
+  CONFIRM_DIALOG_OPEN,
+  CONFIRM_DIALOG_CLOSE,
   uiActions,
   UIState
 } from '../../types';
@@ -50,7 +52,9 @@ function palette(
 /** ui */
 const initUIState: UIState = {
   isDialogOpen: false,
-  isDrawerOpen: true
+  isDrawerOpen: true,
+  isConfDialogOpen: false,
+  deleteId: ''
 };
 
 function ui(
@@ -74,6 +78,14 @@ function ui(
     case DIALOG_CLOSE: {
       const { isDialogOpen } = action.payload;
       return { ...state, isDialogOpen };
+    }
+    case CONFIRM_DIALOG_OPEN: {
+      const { isConfDialogOpen, deleteId } = action.payload;
+      return { ...state, isConfDialogOpen, deleteId };
+    }
+    case CONFIRM_DIALOG_CLOSE: {
+      const { isConfDialogOpen, deleteId } = action.payload;
+      return { ...state, isConfDialogOpen, deleteId };
     }
     default:
       return state;

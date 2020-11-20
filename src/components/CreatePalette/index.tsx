@@ -42,7 +42,6 @@ export const CreatePalette = ({ saveNewPalette, palettes, maxColors }: ICreatePa
     }
     setColorsArr(colorsArr.concat(newColor));
     // setColorName(' '); //clean up the input
-    console.log(colorsArr)
   };
 
   //TODO: FIX DELETE CLICK

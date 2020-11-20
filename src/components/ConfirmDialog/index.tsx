@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Dialog from "@material-ui/core/Dialog";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
@@ -12,36 +12,26 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import blue from "@material-ui/core/colors/blue";
 import red from "@material-ui/core/colors/red";
 
-import { deletePalette } from '../../redux/actions';
+import { deletePalette, closeConfDialog } from '../../redux/actions';
+import { RootState } from '../../redux/reducers';
 
-/** could be refactored with useToggle hook */
 export const ConfirmDialog = () => {
+  const { isConfDialogOpen, deleteId } = useSelector((state: RootState) => state.ui)
   const dispatch = useDispatch();
-  const [open, setOpen] = useState(false);
-  const [deleteId, setDeleteId] = useState('');
-
-  const handleOpenDialog = (id: string) => {
-    setOpen(true);
-    setDeleteId(id);
-  };
 
   const handleCloseDialog = () => {
-    setOpen(false);
-    setDeleteId('');
+    dispatch(closeConfDialog());
   };
 
   const handleDelete = () => {
-    console.log('palette will be deleted')
-    // handleDeletePalette(deleteId);
     dispatch(deletePalette(deleteId));
     handleCloseDialog();
   };
 
   return (
     <Dialog
-      open={open}
+      open={isConfDialogOpen}
       aria-labelledby='delete-dialog-title'
-      onClose={handleOpenDialog}
     >
       <DialogTitle id='delete-dialog-title'>
         Delete This Palette?

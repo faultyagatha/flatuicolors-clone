@@ -11,6 +11,8 @@ import {
   DRAWER_CLOSE,
   DIALOG_OPEN,
   DIALOG_CLOSE,
+  CONFIRM_DIALOG_OPEN,
+  CONFIRM_DIALOG_CLOSE,
   uiActions
 } from '../../types';
 
@@ -62,7 +64,7 @@ export const openDialog = (): uiActions => {
     type: DIALOG_OPEN,
     payload: { isDialogOpen: true }
   };
-}
+};
 
 export const closeDialog = (): uiActions => {
   return {
@@ -82,5 +84,19 @@ export const closeDrawer = (): uiActions => {
   return {
     type: DRAWER_CLOSE,
     payload: { isDrawerOpen: false }
+  }
+};
+
+export const openConfDialog = (id: string): uiActions => {
+  return {
+    type: CONFIRM_DIALOG_OPEN,
+    payload: { isConfDialogOpen: true, deleteId: id }
+  };
+}
+
+export const closeConfDialog = (): uiActions => {
+  return {
+    type: CONFIRM_DIALOG_CLOSE,
+    payload: { isConfDialogOpen: false, deleteId: '' }
   }
 };

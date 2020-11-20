@@ -30,11 +30,13 @@ const initState: RootState = {
   },
   ui: {
     isDialogOpen: false,
-    isDrawerOpen: true
+    isDrawerOpen: true,
+    isConfDialogOpen: false,
+    deleteId: ''
   }
 };
 
-export const makeStore = (initialState = initState) => {
+export const makeStore = (initialState = loadState()) => {
   console.log(initialState);
   const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
   console.log(initialState);

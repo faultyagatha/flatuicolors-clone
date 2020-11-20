@@ -11,6 +11,8 @@ export const DRAWER_OPEN = "DRAWER_OPEN";
 export const DRAWER_CLOSE = "DRAWER_CLOSE";
 export const DIALOG_OPEN = "DIALOG_OPEN";
 export const DIALOG_CLOSE = "DIALOG_CLOSE";
+export const CONFIRM_DIALOG_OPEN = "CONFIRM_DIALOG_OPEN";
+export const CONFIRM_DIALOG_CLOSE = "CONFIRM_DIALOG_CLOSE";
 
 /** palette actions */
 interface savePaletteAction {
@@ -55,7 +57,22 @@ interface dialogCloseAction {
   payload: { isDialogOpen: boolean }
 };
 
-export type uiActions = drawerOpenAction | drawerCloseAction | dialogOpenAction | dialogCloseAction;
+interface confDialogOpenAction {
+  type: typeof CONFIRM_DIALOG_OPEN;
+  payload: { isConfDialogOpen: boolean, deleteId: string }
+};
+
+interface confDialogCloseAction {
+  type: typeof CONFIRM_DIALOG_CLOSE;
+  payload: { isConfDialogOpen: boolean, deleteId: string }
+};
+
+export type uiActions = drawerOpenAction
+  | drawerCloseAction
+  | dialogOpenAction
+  | dialogCloseAction
+  | confDialogOpenAction
+  | confDialogCloseAction;
 
 export interface PaletteState {
   palettes: IPalette[];
@@ -64,4 +81,6 @@ export interface PaletteState {
 export interface UIState {
   isDialogOpen: boolean;
   isDrawerOpen: boolean;
+  isConfDialogOpen: boolean;
+  deleteId: string;
 };
