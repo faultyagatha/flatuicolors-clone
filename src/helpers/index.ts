@@ -28,7 +28,6 @@ export const generatePalette = (seedPalette: IPalette) => {
   let newPalette: IGeneratePalette = {
     paletteName: seedPalette.paletteName,
     id: seedPalette.id,
-    emoji: seedPalette.emoji,
     colors: {}
     // 50: [],
     // 100: [],

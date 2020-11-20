@@ -6,7 +6,7 @@ import { Footer } from '../Footer';
 import { IGeneratePalette } from '../../types';
 import { useStyles } from './useStyles';
 
-export const Palette = ({ colors, paletteName, emoji, id }: IGeneratePalette) => {
+export const Palette = ({ colors, paletteName, id }: IGeneratePalette) => {
   const classes = useStyles();
   const [level, setLevel] = useState(500);
   const [format, setFormat] = useState('hex');
@@ -47,7 +47,7 @@ export const Palette = ({ colors, paletteName, emoji, id }: IGeneratePalette) =>
       <div className={classes.colors}>
         {renderColourBoxes()}
       </div>
-      <Footer paletteName={paletteName} emoji={emoji} />
+      <Footer paletteName={paletteName} />
     </div>
   )
 }

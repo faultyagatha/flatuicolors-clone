@@ -54,6 +54,7 @@ export const useStyles = makeStyles((theme) => ({
     width: "50%",
     padding: "1rem",
     marginTop: "1rem",
-    fontSize: "0.9rem"
+    fontSize: "0.9rem",
+    backgroundColor: "#56b6b2"
   }
 }));

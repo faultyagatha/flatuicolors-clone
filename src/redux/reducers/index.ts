@@ -8,15 +8,21 @@ import {
   DELETE_PALETTE,
   RESTORE_DEFAULTS,
   paletteActions,
-  PaletteState
+  PaletteState,
+  DRAWER_OPEN,
+  DRAWER_CLOSE,
+  DIALOG_OPEN,
+  DIALOG_CLOSE,
+  uiActions,
+  UIState
 } from '../../types';
 
-const initState: PaletteState = {
+const initPaletteState: PaletteState = {
   palettes: seedPalette
 };
 
 function palette(
-  state: PaletteState = initState,
+  state: PaletteState = initPaletteState,
   action: paletteActions
 ): PaletteState {
   switch (action.type) {
@@ -34,7 +40,40 @@ function palette(
       return { palettes: updatedPalettes }
     }
     case RESTORE_DEFAULTS: {
-      return initState;
+      return initPaletteState;
+    }
+    default:
+      return state;
+  }
+};
+
+/** ui */
+const initUIState: UIState = {
+  isDialogOpen: false,
+  isDrawerOpen: true
+};
+
+function ui(
+  state: UIState = initUIState,
+  action: uiActions
+): UIState {
+  switch (action.type) {
+    case DRAWER_OPEN: {
+      const { isDrawerOpen } = action.payload;
+      console.log({ ...state, isDrawerOpen });
+      return { ...state, isDrawerOpen };
+    }
+    case DRAWER_CLOSE: {
+      const { isDrawerOpen } = action.payload;
+      return { ...state, isDrawerOpen };
+    }
+    case DIALOG_OPEN: {
+      const { isDialogOpen } = action.payload;
+      return { ...state, isDialogOpen };
+    }
+    case DIALOG_CLOSE: {
+      const { isDialogOpen } = action.payload;
+      return { ...state, isDialogOpen };
     }
     default:
       return state;
@@ -42,7 +81,8 @@ function palette(
 };
 
 export const rootReducer = combineReducers({
-  palette
+  palette,
+  ui
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

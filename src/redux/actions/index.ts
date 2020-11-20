@@ -6,7 +6,12 @@ import {
   GENERATE_PALETTE,
   DELETE_PALETTE,
   RESTORE_DEFAULTS,
-  paletteActions
+  paletteActions,
+  DRAWER_OPEN,
+  DRAWER_CLOSE,
+  DIALOG_OPEN,
+  DIALOG_CLOSE,
+  uiActions
 } from '../../types';
 
 export const savePalette = (newPalette: any): paletteActions => {
@@ -48,5 +53,34 @@ export const restoreDefaults = (): any => {
   return async (dispatch: Dispatch, getState: any) => {
     localStorage.clear();
     dispatch(restoreDefaultsAction());
+  }
+};
+
+/** UI */
+export const openDialog = (): uiActions => {
+  return {
+    type: DIALOG_OPEN,
+    payload: { isDialogOpen: true }
+  };
+}
+
+export const closeDialog = (): uiActions => {
+  return {
+    type: DIALOG_CLOSE,
+    payload: { isDialogOpen: false }
+  }
+};
+
+export const openDrawer = (): uiActions => {
+  return {
+    type: DRAWER_OPEN,
+    payload: { isDrawerOpen: true }
+  }
+};
+
+export const closeDrawer = (): uiActions => {
+  return {
+    type: DRAWER_CLOSE,
+    payload: { isDrawerOpen: false }
   }
 };

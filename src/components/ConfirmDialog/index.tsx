@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import Dialog from "@material-ui/core/Dialog";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
@@ -11,7 +12,11 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import blue from "@material-ui/core/colors/blue";
 import red from "@material-ui/core/colors/red";
 
+import { deletePalette } from '../../redux/actions';
+
+/** could be refactored with useToggle hook */
 export const ConfirmDialog = () => {
+  const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
   const [deleteId, setDeleteId] = useState('');
 
@@ -28,6 +33,7 @@ export const ConfirmDialog = () => {
   const handleDelete = () => {
     console.log('palette will be deleted')
     // handleDeletePalette(deleteId);
+    dispatch(deletePalette(deleteId));
     handleCloseDialog();
   };
 

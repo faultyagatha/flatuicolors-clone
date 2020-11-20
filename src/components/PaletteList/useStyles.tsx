@@ -25,7 +25,7 @@ export const useStyles = makeStyles({
     overflow: "scroll"
   },
   container: {
-    width: "50%",
+    width: "60%",
     display: "flex",
     alignItems: "flex-start",
     flexDirection: "column",
@@ -53,7 +53,6 @@ export const useStyles = makeStyles({
     }
   },
   navBtns: {
-    marginRight: "1rem",
     "& a": {
       textDecoration: "none"
     },
@@ -62,7 +61,6 @@ export const useStyles = makeStyles({
     },
   },
   palettes: {
-    // boxSizing: "border-box",
     width: "100%",
     display: "grid",
     gridTemplateColumns: "repeat(3, 30%)",

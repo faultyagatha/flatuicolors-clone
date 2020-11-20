@@ -9,7 +9,6 @@ import { useStyles } from './useStyles';
 export const MiniPalette = ({
   paletteName,
   id,
-  emoji,
   colors,
   handlePaletteClick
 }: IMiniPalette) => {
@@ -20,7 +19,7 @@ export const MiniPalette = ({
 
   const handleDeletePalette = (e: any) => {
     e.stopPropagation();
-    dispatch(deletePalette(id));
+    // dispatch(deletePalette(id));
   };
 
   const miniColorBoxes = colors.map(color => {
@@ -28,7 +27,7 @@ export const MiniPalette = ({
       <div
         className={classes.miniColor}
         style={{ backgroundColor: color.color }}
-        key={color.name}
+        key={Math.random() * 10000}
       />
     )
   });
@@ -41,7 +40,7 @@ export const MiniPalette = ({
       />
       <div className={classes.colors}>{miniColorBoxes}</div>
       <h5 className={classes.title}>
-        {paletteName} <span className={classes.emoji}>{emoji}</span>
+        {paletteName}
       </h5>
     </div>
   )

@@ -3,12 +3,11 @@ import React from 'react';
 import { IFooter } from '../../types';
 import { useStyles } from './useStyles';
 
-export const Footer = ({ paletteName, emoji }: IFooter) => {
+export const Footer = ({ paletteName }: IFooter) => {
   const classes = useStyles();
   return (
     <footer className={classes.footer}>
       {paletteName}
-      <span className={classes.emoji}>{emoji}</span>
     </footer>
   )
 };

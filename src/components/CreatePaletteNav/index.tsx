@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, Link } from 'react-router-dom';
 import { useTheme } from '@material-ui/core/styles';
 import clsx from 'clsx';
@@ -13,8 +14,8 @@ import Button from '@material-ui/core/Button';
 import { useStyles } from './useStyles';
 import { ICreatePaletteNav } from '../../types';
 import { PaletteDialog } from '../PaletteDialog';
-
-
+import { openDialog, closeDialog } from '../../redux/actions';
+import { RootState } from '../../redux/reducers';
 
 export const CreatePaletteNav = ({
   open,
@@ -26,7 +27,8 @@ export const CreatePaletteNav = ({
   const theme = useTheme();
   const classes = useStyles(theme);
   const history = useHistory();
-  const [dialogOpen, setDialogOpen] = useState(false);
+  const dispatch = useDispatch();
+  const { isDialogOpen } = useSelector((state: RootState) => state.ui);
 
   const handleSavePalette = (paletteName: string) => {
     const newPalette = {
@@ -39,11 +41,11 @@ export const CreatePaletteNav = ({
   };
 
   const handleDialogOpen = () => {
-    setDialogOpen(true);
+    dispatch(openDialog());
   }
 
   const handleHideDialog = () => {
-    setDialogOpen(false);
+    dispatch(closeDialog());
   }
 
   return (
@@ -90,12 +92,12 @@ export const CreatePaletteNav = ({
               </Button>
         </div>
       </AppBar>
-      {dialogOpen && (
+      {isDialogOpen && (
         <PaletteDialog
           palettes={palettes}
           handleSavePalette={handleSavePalette}
           handleHideDialog={handleHideDialog}
-          dialogOpen={dialogOpen}
+          dialogOpen={isDialogOpen}
         />
       )}
     </div>

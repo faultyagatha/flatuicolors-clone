@@ -8,7 +8,7 @@ import { IColorPicker } from '../../types/app';
 
 export const ColorPicker = ({ isPaletteFull, handleAddColor, colorsArr }: IColorPicker) => {
   const classes = useStyles();
-  const [currentColor, setCurrentColor] = useState('purple');
+  const [currentColor, setCurrentColor] = useState('#849700');
   const [colorName, setColorName] = useState('');
 
   const handleChangeColor = (newColor: ColorResult) => {

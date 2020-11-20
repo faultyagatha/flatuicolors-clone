@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import clsx from 'clsx';
 import { useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -13,22 +14,25 @@ import { CreatePaletteNav } from '../CreatePaletteNav';
 import { ColorPicker } from '../ColorPicker';
 import { useStyles } from './useStyles';
 import { ICreatePalette } from '../../types';
+import { openDrawer, closeDrawer } from '../../redux/actions';
+import { RootState } from '../../redux/reducers';
 
 //TODO: clean up the input field
 export const CreatePalette = ({ saveNewPalette, palettes, maxColors }: ICreatePalette) => {
   const theme = useTheme();
   const classes = useStyles(theme);
-  const [open, setOpen] = useState(true);
+  const dispatch = useDispatch();
+  const { isDrawerOpen } = useSelector((state: RootState) => state.ui)
   const [colorsArr, setColorsArr] = useState(palettes[0].colors);
 
   const isPaletteFull = colorsArr.length >= maxColors;
 
   const handleDrawerOpen = () => {
-    setOpen(true);
+    dispatch(openDrawer());
   };
 
   const handleDrawerClose = () => {
-    setOpen(false);
+    dispatch(closeDrawer());
   };
 
   const handleAddColor = (currentColor: string, colorName: string) => {
@@ -44,7 +48,6 @@ export const CreatePalette = ({ saveNewPalette, palettes, maxColors }: ICreatePa
   //TODO: FIX DELETE CLICK
   const handleDeleteClick = (colorName: string) => {
     setColorsArr(colorsArr.filter(c => c.name !== colorName));
-    // console.log(colorsArr)
   };
 
   const handleClearColors = () => {
@@ -66,7 +69,7 @@ export const CreatePalette = ({ saveNewPalette, palettes, maxColors }: ICreatePa
   return (
     <div className={classes.root}>
       <CreatePaletteNav
-        open={open}
+        open={isDrawerOpen}
         colorsArr={colorsArr}
         saveNewPalette={saveNewPalette}
         palettes={palettes}
@@ -76,7 +79,7 @@ export const CreatePalette = ({ saveNewPalette, palettes, maxColors }: ICreatePa
         className={classes.drawer}
         variant="persistent"
         anchor="left"
-        open={open}
+        open={isDrawerOpen}
         classes={{
           paper: classes.drawerPaper
         }}
@@ -115,7 +118,7 @@ export const CreatePalette = ({ saveNewPalette, palettes, maxColors }: ICreatePa
       </Drawer>
       <main
         className={clsx(classes.content, {
-          [classes.contentShift]: open,
+          [classes.contentShift]: isDrawerOpen,
         })}
       >
         <div className={classes.drawerHeader} />

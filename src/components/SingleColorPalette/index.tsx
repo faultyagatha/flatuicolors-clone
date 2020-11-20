@@ -50,9 +50,7 @@ export const SingleColorPalette = ({ colorId, palette }: ISingleColorPalette) =>
       >
         Go Back
       </div>
-      <Footer
-        paletteName={palette.paletteName}
-        emoji={palette.emoji} />
+      <Footer paletteName={palette.paletteName} />
     </div>
   )
 }

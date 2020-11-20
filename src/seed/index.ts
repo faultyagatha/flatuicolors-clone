@@ -2,7 +2,6 @@ export const seedPalette = [
   {
     paletteName: "Material UI Colors",
     id: "material-ui-colors",
-    emoji: "🎨",
     colors: [
       { name: "red", color: "#F44336" },
       { name: "pink", color: "#E91E63" },
@@ -28,7 +27,6 @@ export const seedPalette = [
   {
     paletteName: "Flat UI Colors v1",
     id: "flat-ui-colors-v1",
-    emoji: "🤙",
     colors: [
       { name: "Turquoise", color: "#1abc9c" },
       { name: "Emerald", color: "#2ecc71" },
@@ -55,7 +53,6 @@ export const seedPalette = [
   {
     paletteName: "Flat UI Colors Dutch",
     id: "flat-ui-colors-dutch",
-    emoji: "🇳🇱",
     colors: [
       { name: "Sunflower", color: "#FFC312" },
       { name: "Energos", color: "#C4E538" },
@@ -82,7 +79,6 @@ export const seedPalette = [
   {
     paletteName: "Flat UI Colors American",
     id: "flat-ui-colors-american",
-    emoji: "🇺🇸",
     colors: [
       { name: "LightGreenishBlue", color: "#55efc4" },
       { name: "FadedPoster", color: "#81ecec" },

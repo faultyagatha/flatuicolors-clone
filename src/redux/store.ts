@@ -4,13 +4,6 @@ import thunk from "redux-thunk";
 import { rootReducer, RootState } from './reducers';
 import { seedPalette } from '../seed';
 
-//TODO: fix the type
-// const initState: any = {
-//   palettes: {
-//     palette: seedPalette
-//   }
-// };
-
 /** state helper functions */
 export const loadState = () => {
   try {
@@ -22,7 +15,7 @@ export const loadState = () => {
   }
 };
 
-export const saveState = (state: any) => {
+export const saveState = (state: unknown) => {
   try {
     const serialisedState = JSON.stringify(state);
     localStorage.setItem("state", serialisedState);
@@ -31,10 +24,20 @@ export const saveState = (state: any) => {
   }
 };
 
-export const makeStore = (initialState = loadState()) => {
+const initState: RootState = {
+  palette: {
+    palettes: seedPalette
+  },
+  ui: {
+    isDialogOpen: false,
+    isDrawerOpen: true
+  }
+};
+
+export const makeStore = (initialState = initState) => {
   console.log(initialState);
   const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-
+  console.log(initialState);
   const store = createStore(
     rootReducer,
     initialState,

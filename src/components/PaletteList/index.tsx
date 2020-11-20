@@ -21,7 +21,7 @@ export const PaletteList = ({ seedPalettes }: IPaletteList) => {
 
   const handleRestoreDefaults = () => {
     dispatch(restoreDefaults());
-  }
+  };
 
   return (
     <div className={classes.root} >
