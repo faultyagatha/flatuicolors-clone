@@ -30,10 +30,6 @@ export const useStyles = makeStyles({
     fontSize: "1rem",
     position: "relative"
   },
-  emoji: {
-    marginLeft: "0.5rem",
-    fontSize: "1.5rem"
-  },
   miniColor: {
     height: "25%",
     width: "20%",
@@ -46,13 +42,14 @@ export const useStyles = makeStyles({
     background: "white",
     color: 'olive',
     transition: "all 0.2s ease-in-out",
-    width: "20px",
-    height: "20px",
+    width: "15%",
+    height: "15%",
     position: "absolute",
     right: "0px",
     top: "0px",
-    padding: "10px",
+    padding: "2px",
     zIndex: 10,
+    borderRadius: "5px",
     opacity: 0
   }
 });

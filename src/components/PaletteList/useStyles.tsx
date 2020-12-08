@@ -64,7 +64,7 @@ export const useStyles = makeStyles({
     width: "100%",
     display: "grid",
     gridTemplateColumns: "repeat(3, 30%)",
-    gridGap: "5%",
+    gridGap: "0 5%",
     [BREAKPOINTS.down("md")]: {
       gridTemplateColumns: "repeat(2, 50%)"
     },
