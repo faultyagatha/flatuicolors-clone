@@ -5,11 +5,12 @@ import { DRAWER_WIDTH } from '../../constants';
 export const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
+    height: "100vh"
   },
   drawer: {
     width: DRAWER_WIDTH,
     flexShrink: 0,
-    height: "100vh"
+    // height: "100vh"
   },
   drawerPaper: {
     width: DRAWER_WIDTH,
@@ -55,6 +56,5 @@ export const useStyles = makeStyles((theme) => ({
     padding: "1rem",
     marginTop: "1rem",
     fontSize: "0.9rem",
-    backgroundColor: "#56b6b2"
   }
 }));

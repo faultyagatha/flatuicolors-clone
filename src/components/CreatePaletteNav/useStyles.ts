@@ -42,7 +42,6 @@ export const useStyles = makeStyles((theme) => ({
   },
   button: {
     margin: "0 0.5rem",
-    backgroundColor: "#56b6b2",
     [BREAKPOINTS.down("xs")]: {
       margin: "0 0.2rem",
       padding: "0.3rem"

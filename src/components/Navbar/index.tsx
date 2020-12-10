@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import IconButton from '@material-ui/core/IconButton';
@@ -15,9 +15,11 @@ import { useStyles } from './useStyles';
 export const Navbar = ({
   level,
   isSingleColor,
+  paletteId,
   handleLevelChange,
   handleSelectChange
 }: INavbar) => {
+  const history = useHistory();
   const classes = useStyles();
   const [format, setFormat] = useState('hex');
   const [isOpen, setIsOpen] = useState(false);
@@ -31,6 +33,10 @@ export const Navbar = ({
 
   const handleCloseSnackbar = () => {
     setIsOpen(false);
+  };
+
+  const handleGoBackClick = (id: string) => {
+    history.push(`/palette/${id}`);
   };
 
   return (
@@ -49,6 +55,12 @@ export const Navbar = ({
             onAfterChange={handleLevelChange} />
         </div>
       </div>}
+      {isSingleColor && paletteId && <button
+        className={classes.goBack}
+        onClick={() => handleGoBackClick(paletteId)}
+      >
+        Go Back
+      </button>}
       <div className={classes.selectContainer}>
         <Select value={format} onChange={handleFormatChange}>
           <MenuItem value="hex">HEX - #ffffff</MenuItem>

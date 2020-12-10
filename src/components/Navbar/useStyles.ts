@@ -25,6 +25,21 @@ export const useStyles = makeStyles({
       display: "none"
     }
   },
+  goBack: {
+    fontSize: "18px",
+    textTransform: "uppercase",
+    height: "50%",
+    marginLeft: "auto",
+    // display: "flex",
+    alignItems: "center",
+    "& a": {
+      textDecoration: "none",
+      color: "gray",
+    },
+    [BREAKPOINTS.down("xs")]: {
+      display: "none"
+    }
+  },
   selectContainer: {
     marginLeft: "auto",
     marginRight: "1rem"

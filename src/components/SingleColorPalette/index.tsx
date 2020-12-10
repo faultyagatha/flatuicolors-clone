@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
 
 import { ISingleColorPalette } from '../../types';
 import { useStyles } from './useStyles';
@@ -9,7 +8,6 @@ import { Navbar } from '../Navbar';
 import { Footer } from '../Footer';
 
 export const SingleColorPalette = ({ colorId, palette }: ISingleColorPalette) => {
-  const history = useHistory();
   const [format, setFormat] = useState('hex');
   const classes = useStyles();
 
@@ -17,10 +15,6 @@ export const SingleColorPalette = ({ colorId, palette }: ISingleColorPalette) =>
 
   const handleFormatChange = (value: any) => {
     setFormat(value);
-  };
-
-  const handleGoBackClick = (id: string) => {
-    history.push(`/palette/${id}`);
   };
 
   const colorBoxes = shades.map((color: any) => {
@@ -40,15 +34,10 @@ export const SingleColorPalette = ({ colorId, palette }: ISingleColorPalette) =>
       <Navbar
         isSingleColor={true}
         handleSelectChange={handleFormatChange}
+        paletteId={palette.id}
       />
       <div className={classes.colors}>
         {colorBoxes}
-      </div>
-      <div
-        className={classes.goBack}
-        onClick={() => handleGoBackClick(palette.id)}
-      >
-        Go Back
       </div>
       <Footer paletteName={palette.paletteName} />
     </div>

@@ -26,6 +26,7 @@ export interface IGeneratePalette {
 export interface INavbar {
   level?: number;
   isSingleColor: boolean;
+  paletteId?: string;
   handleLevelChange?(newLevel: number): void;
   handleSelectChange(value: string): void;
 };

@@ -9,13 +9,24 @@ export const useStyles = makeStyles({
     height: "25%",
     margin: "0 auto",
     display: "inline-block",
-    position: "relative",
+    // position: "relative",
     cursor: "pointer",
-    // textTransform: "uppercase",
-    // marginBottom: "-3.5px",
+    textTransform: "uppercase",
+    marginBottom: "-3.5px",
+    "& svg": {
+      position: "absolute",
+      letterSpacing: "1px",
+      display: "flex",
+      justifyContent: "space-between",
+      color: (props: any) =>
+        chroma(props.color).luminance() <= 0.7 //0.01
+          ? "rgba(255,255,255,0.8)"
+          : "rgba(0,0,0,0.6)",
+      transition: "all 0.3s ease-in-out"
+    },
     "&:hover svg": {
       color: (props: any) =>
-        chroma(props.color).luminance() >= 0.7
+        chroma(props.color).luminance() >= 0.07 //0.01
           ? "rgba(255,255,255,0.8)"
           : "rgba(0,0,0,0.6)",
       transform: "scale(1.5)"
@@ -33,7 +44,7 @@ export const useStyles = makeStyles({
       height: "10%"
     }
   },
-  content: {
+  boxContent: {
     position: "absolute",
     width: "100%",
     left: "0px",
@@ -45,9 +56,5 @@ export const useStyles = makeStyles({
     fontSize: "12px",
     display: "flex",
     justifyContent: "space-between"
-  },
-  deleteIcon: {
-    color: 'olive',//"rgba(255, 255, 255, 0.5",
-    transition: "all 0.3s ease-in-out"
   }
 });
