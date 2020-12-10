@@ -52,7 +52,7 @@ export const deletePalette = (id: string): any => {
 };
 
 export const restoreDefaults = (): any => {
-  return async (dispatch: Dispatch, getState: any) => {
+  return async (dispatch: Dispatch) => {
     localStorage.clear();
     dispatch(restoreDefaultsAction());
   }

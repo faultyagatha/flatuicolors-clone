@@ -44,7 +44,6 @@ export const CreatePalette = ({ saveNewPalette, palettes, maxColors }: ICreatePa
     // setColorName(' '); //clean up the input
   };
 
-  //TODO: FIX DELETE CLICK
   const handleDeleteClick = (colorName: string) => {
     setColorsArr(colorsArr.filter(c => c.name !== colorName));
   };

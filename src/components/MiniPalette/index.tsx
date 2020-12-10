@@ -17,9 +17,8 @@ export const MiniPalette = ({
 
   console.log('RENDERING: ', paletteName);
 
-  const handleDeleteClick = (e: any) => {
+  const handleDeleteClick = (e: React.MouseEvent) => {
     e.stopPropagation();
-    console.log(id);
     dispatch(openConfDialog(id));
   };
 
