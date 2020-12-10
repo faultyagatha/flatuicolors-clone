@@ -3,7 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import Button from '@material-ui/core/Button';
-import Alert from '@material-ui/lab/Alert';
+import Snackbar from '@material-ui/core/Snackbar';
 
 import { IPaletteList } from '../../types';
 import { RootState } from '../../redux/reducers';
@@ -53,10 +53,12 @@ export const PaletteList = ({ seedPalettes }: IPaletteList) => {
         </TransitionGroup>
       </div>
       <ConfirmDialog />
-      {isAlert && <Alert
-        severity="info"
-        className={classes.alert}
-        onClose={() => dispatch(hideAlert())}>Woopa! You cannot delete this palette</Alert>}
+      <Snackbar
+        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+        open={isAlert}
+        onClose={() => dispatch(hideAlert())}
+        message="Woopa! You cannot delete this palette"
+      />
     </div>
   )
 };
