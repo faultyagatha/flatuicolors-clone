@@ -13,6 +13,7 @@ import {
   DIALOG_CLOSE,
   CONFIRM_DIALOG_OPEN,
   CONFIRM_DIALOG_CLOSE,
+  SHOW_ALERT,
   uiActions
 } from '../../types';
 
@@ -100,3 +101,17 @@ export const closeConfDialog = (): uiActions => {
     payload: { isConfDialogOpen: false, deleteId: '' }
   }
 };
+
+export const showAlert = (): uiActions => {
+  return {
+    type: SHOW_ALERT,
+    payload: { isAlert: true }
+  };
+}
+
+export const hideAlert = (): uiActions => {
+  return {
+    type: SHOW_ALERT,
+    payload: { isAlert: false }
+  };
+}

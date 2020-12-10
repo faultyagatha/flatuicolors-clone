@@ -15,6 +15,7 @@ import {
   DIALOG_CLOSE,
   CONFIRM_DIALOG_OPEN,
   CONFIRM_DIALOG_CLOSE,
+  SHOW_ALERT,
   uiActions,
   UIState
 } from '../../types';
@@ -54,7 +55,8 @@ const initUIState: UIState = {
   isDialogOpen: false,
   isDrawerOpen: true,
   isConfDialogOpen: false,
-  deleteId: ''
+  deleteId: '',
+  isAlert: false
 };
 
 function ui(
@@ -86,6 +88,11 @@ function ui(
     case CONFIRM_DIALOG_CLOSE: {
       const { isConfDialogOpen, deleteId } = action.payload;
       return { ...state, isConfDialogOpen, deleteId };
+    }
+    case SHOW_ALERT: {
+      const { isAlert } = action.payload;
+      console.log('ACTION: ', isAlert);
+      return { ...state, isAlert };
     }
     default:
       return state;

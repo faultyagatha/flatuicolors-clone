@@ -24,11 +24,8 @@ export const ConfirmDialog = () => {
   };
 
   const handleDelete = () => {
-    if (deleteId === 'material-ui-colors') return;
-    else {
-      dispatch(deletePalette(deleteId));
-      handleCloseDialog();
-    }
+    dispatch(deletePalette(deleteId));
+    handleCloseDialog();
   };
 
   return (

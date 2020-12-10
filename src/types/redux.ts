@@ -1,8 +1,8 @@
 import { IPalette } from './app';
 
 /** palette constants */
-export const SAVE_PALETTE = 'SAVE_PALETTE';
-export const GENERATE_PALETTE = 'GENERATE_PALETTE';
+export const SAVE_PALETTE = "SAVE_PALETTE";
+export const GENERATE_PALETTE = "GENERATE_PALETTE";
 export const DELETE_PALETTE = "DELETE_PALETTE";
 export const RESTORE_DEFAULTS = "RESTORE_DEFAULTS";
 
@@ -13,6 +13,7 @@ export const DIALOG_OPEN = "DIALOG_OPEN";
 export const DIALOG_CLOSE = "DIALOG_CLOSE";
 export const CONFIRM_DIALOG_OPEN = "CONFIRM_DIALOG_OPEN";
 export const CONFIRM_DIALOG_CLOSE = "CONFIRM_DIALOG_CLOSE";
+export const SHOW_ALERT = "SHOW_ALERT";
 
 /** palette actions */
 interface savePaletteAction {
@@ -67,12 +68,18 @@ interface confDialogCloseAction {
   payload: { isConfDialogOpen: boolean, deleteId: string }
 };
 
+interface alertAction {
+  type: typeof SHOW_ALERT;
+  payload: { isAlert: boolean }
+}
+
 export type uiActions = drawerOpenAction
   | drawerCloseAction
   | dialogOpenAction
   | dialogCloseAction
   | confDialogOpenAction
-  | confDialogCloseAction;
+  | confDialogCloseAction
+  | alertAction;
 
 export interface PaletteState {
   palettes: IPalette[];
@@ -83,4 +90,5 @@ export interface UIState {
   isDrawerOpen: boolean;
   isConfDialogOpen: boolean;
   deleteId: string;
+  isAlert: boolean;
 };

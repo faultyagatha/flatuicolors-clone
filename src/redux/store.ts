@@ -32,7 +32,8 @@ const initState: RootState = {
     isDialogOpen: false,
     isDrawerOpen: true,
     isConfDialogOpen: false,
-    deleteId: ''
+    deleteId: '',
+    isAlert: false
   }
 };
 

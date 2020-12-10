@@ -72,5 +72,9 @@ export const useStyles = makeStyles({
       gridTemplateColumns: "repeat(1, 100%)",
       gridGap: "1rem"
     }
+  },
+  alert: {
+    width: "50%",
+    justifyContent: "center",
   }
 });
