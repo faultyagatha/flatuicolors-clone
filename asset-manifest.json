@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/projects/flatuicolors-clone/static/css/main.89e562fa.chunk.css",
+    "main.js": "/projects/flatuicolors-clone/static/js/main.76cb9991.chunk.js",
+    "main.js.map": "/projects/flatuicolors-clone/static/js/main.76cb9991.chunk.js.map",
+    "runtime-main.js": "/projects/flatuicolors-clone/static/js/runtime-main.35d51fa6.js",
+    "runtime-main.js.map": "/projects/flatuicolors-clone/static/js/runtime-main.35d51fa6.js.map",
+    "static/css/2.7fe95f8e.chunk.css": "/projects/flatuicolors-clone/static/css/2.7fe95f8e.chunk.css",
+    "static/js/2.05fd41c0.chunk.js": "/projects/flatuicolors-clone/static/js/2.05fd41c0.chunk.js",
+    "static/js/2.05fd41c0.chunk.js.map": "/projects/flatuicolors-clone/static/js/2.05fd41c0.chunk.js.map",
+    "static/js/3.322a175f.chunk.js": "/projects/flatuicolors-clone/static/js/3.322a175f.chunk.js",
+    "static/js/3.322a175f.chunk.js.map": "/projects/flatuicolors-clone/static/js/3.322a175f.chunk.js.map",
+    "index.html": "/projects/flatuicolors-clone/index.html",
+    "static/css/2.7fe95f8e.chunk.css.map": "/projects/flatuicolors-clone/static/css/2.7fe95f8e.chunk.css.map",
+    "static/css/main.89e562fa.chunk.css.map": "/projects/flatuicolors-clone/static/css/main.89e562fa.chunk.css.map",
+    "static/js/2.05fd41c0.chunk.js.LICENSE.txt": "/projects/flatuicolors-clone/static/js/2.05fd41c0.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.35d51fa6.js",
+    "static/css/2.7fe95f8e.chunk.css",
+    "static/js/2.05fd41c0.chunk.js",
+    "static/css/main.89e562fa.chunk.css",
+    "static/js/main.76cb9991.chunk.js"
+  ]
+}
