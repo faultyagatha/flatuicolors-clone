@@ -1,8 +1,7 @@
 import { createStore, compose, applyMiddleware } from 'redux';
 import thunk from "redux-thunk";
 
-import { rootReducer, RootState } from './reducers';
-import { seedPalette } from '../seed';
+import { rootReducer } from './reducers';
 
 /** state helper functions */
 export const loadState = () => {
@@ -24,6 +23,7 @@ export const saveState = (state: unknown) => {
   }
 };
 
+/*
 const initState: RootState = {
   palette: {
     palettes: seedPalette
@@ -36,11 +36,10 @@ const initState: RootState = {
     isAlert: false
   }
 };
+*/
 
 export const makeStore = (initialState = loadState()) => {
-  console.log(initialState);
   const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-  console.log(initialState);
   const store = createStore(
     rootReducer,
     initialState,

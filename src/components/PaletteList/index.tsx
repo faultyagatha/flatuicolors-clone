@@ -13,7 +13,7 @@ import { restoreDefaults, hideAlert } from '../../redux/actions';
 import { useStyles } from './useStyles';
 
 export const PaletteList = ({ seedPalettes }: IPaletteList) => {
-  const { isAlert } = useSelector((state: RootState) => state.ui)
+  const { isAlert } = useSelector((state: RootState) => state.ui);
   const dispatch = useDispatch();
   const classes = useStyles();
   const history = useHistory();
@@ -26,15 +26,13 @@ export const PaletteList = ({ seedPalettes }: IPaletteList) => {
     dispatch(restoreDefaults());
   };
 
-  console.log(isAlert);
-
   return (
     <div className={classes.root} >
       <div className={classes.container}>
         <nav className={classes.nav}>
           <h1 className={classes.title}>COLOURS</h1>
           <div className={classes.navBtns}>
-            <Link to='/palette/new'><Button>CREATE NEW PALETTE</Button></Link>
+            <Link to='/palette/new'><Button>CREATE NEW</Button></Link>
             <Button onClick={handleRestoreDefaults}>RESTORE DEFAULTS</Button>
           </div>
         </nav>
@@ -60,7 +58,7 @@ export const PaletteList = ({ seedPalettes }: IPaletteList) => {
         message="Woopa! You cannot delete this palette"
       />
     </div>
-  )
-};
+  );
+}
 
 export default PaletteList;

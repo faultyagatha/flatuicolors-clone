@@ -50,6 +50,9 @@ export const useStyles = makeStyles((theme) => ({
     }
   },
   title: {
+    [BREAKPOINTS.down("md")]: {
+      display: "none"
+    },
     [BREAKPOINTS.down("xs")]: {
       display: "none"
     }

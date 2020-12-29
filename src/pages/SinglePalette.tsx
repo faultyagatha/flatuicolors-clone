@@ -10,11 +10,10 @@ import { RootState } from '../redux/reducers';
 export const SinglePalette = () => {
   const { id } = useParams<IParams>();
   const { palettes } = useSelector((state: RootState) => state.palette);
-
   const [palette] = palettes.filter(p => p.id === id);
   return (
-    <div>
+    <>
       {palette && <Palette {...generatePalette(palette)} />}
-    </div>
+    </>
   )
 }

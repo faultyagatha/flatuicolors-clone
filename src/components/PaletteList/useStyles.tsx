@@ -40,6 +40,12 @@ export const useStyles = makeStyles({
   title: {
     fontSize: "2rem",
     color: "gray",
+    [BREAKPOINTS.down("sm")]: {
+      fontSize: "1rem",
+    },
+    [BREAKPOINTS.down("xs")]: {
+      display: "none"
+    }
   },
   nav: {
     display: "flex",

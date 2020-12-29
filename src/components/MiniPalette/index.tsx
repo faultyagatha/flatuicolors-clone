@@ -15,8 +15,6 @@ export const MiniPalette = ({
   const classes = useStyles();
   const dispatch = useDispatch();
 
-  console.log('RENDERING: ', paletteName);
-
   const handleDeleteClick = (e: React.MouseEvent) => {
     e.stopPropagation();
     if (id === 'material-ui-colors') {

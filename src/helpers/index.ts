@@ -61,7 +61,6 @@ export const generatePalette = (seedPalette: IPalette) => {
 
 export const findPalette = (id: string) => {
   return seedPalette.find((palette: any) => {
-    // console.log(palette.id)
     return palette.id === id;
   });
 };
@@ -70,7 +69,7 @@ export const getShades = (palette: IGeneratePalette, colorId: string) => {
   let shades: any = [];
   let allColors = palette.colors;
   for (let key in allColors) {
-    console.log(allColors[key])
+    // console.log(allColors[key])
     shades = shades.concat(
       allColors[key].filter(color => color.id === colorId)
     );
