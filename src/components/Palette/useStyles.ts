@@ -7,6 +7,6 @@ export const useStyles = makeStyles({
     flexDirection: "column"
   },
   colors: {
-    height: "90%"
+    height: "100%"
   }
 });

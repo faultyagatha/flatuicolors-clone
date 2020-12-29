@@ -17,7 +17,7 @@ export const useStyles = makeStyles({
     /** end of css transition customisation */
   },
   root: {
-    backgroundColor: "#d7f1f3",
+    backgroundColor: "#edeef2",
     height: "100vh",
     display: "flex",
     alignItems: "flex-start",
@@ -25,20 +25,21 @@ export const useStyles = makeStyles({
     overflow: "scroll"
   },
   container: {
-    width: "60%",
+    width: "70%",
     display: "flex",
     alignItems: "flex-start",
     flexDirection: "column",
     flexWrap: "wrap",
     [BREAKPOINTS.down("xl")]: {
-      width: "80%"
+      width: "70%"
     },
     [BREAKPOINTS.down("xs")]: {
       width: "75%"
     }
   },
   title: {
-    fontSize: "2rem"
+    fontSize: "2rem",
+    color: "gray",
   },
   nav: {
     display: "flex",
@@ -46,9 +47,8 @@ export const useStyles = makeStyles({
     justifyContent: "space-between",
     alignItems: "center",
     color: "black",
-    "& a": {
+    "&:a": {
       color: "black",
-      // fontSize: "1.2rem",
       textDecoration: "none"
     }
   },

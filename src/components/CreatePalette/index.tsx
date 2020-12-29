@@ -17,7 +17,6 @@ import { ICreatePalette } from '../../types';
 import { openDrawer, closeDrawer } from '../../redux/actions';
 import { RootState } from '../../redux/reducers';
 
-//TODO: clean up the input field
 export const CreatePalette = ({ saveNewPalette, palettes, maxColors }: ICreatePalette) => {
   const theme = useTheme();
   const classes = useStyles(theme);

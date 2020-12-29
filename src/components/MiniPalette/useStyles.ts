@@ -2,9 +2,9 @@ import { makeStyles } from "@material-ui/styles";
 
 export const useStyles = makeStyles({
   root: {
-    backgroundColor: "white",
+    backgroundColor: "#edeef2",
     borderRadius: "5px",
-    padding: "0.5rem",
+    padding: "0.3rem",
     position: "relative",
     overflow: "hidden",
     cursor: "pointer",
@@ -14,8 +14,7 @@ export const useStyles = makeStyles({
   },
   colors: {
     backgroundColor: "#dae1e4",
-    height: "200px",
-    // height: "170px",
+    height: "170px",
     width: "100%",
     borderRadius: "5px",
     overflow: "hidden"

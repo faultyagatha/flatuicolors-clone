@@ -9,15 +9,11 @@ export const useStyles = makeStyles({
     height: "25%",
     margin: "0 auto",
     display: "inline-block",
-    // position: "relative",
+    position: "relative",
     cursor: "pointer",
     textTransform: "uppercase",
     marginBottom: "-3.5px",
     "& svg": {
-      position: "absolute",
-      letterSpacing: "1px",
-      display: "flex",
-      justifyContent: "space-between",
       color: (props: any) =>
         chroma(props.color).luminance() <= 0.7 //0.01
           ? "rgba(255,255,255,0.8)"
@@ -44,13 +40,16 @@ export const useStyles = makeStyles({
       height: "10%"
     }
   },
-  boxContent: {
+  dragBoxContent: {
     position: "absolute",
     width: "100%",
     left: "0px",
-    bottom: "0px",
+    bottom: "10px",
     padding: "10px",
-    color: "rgba(255, 255, 255, 0.5",
+    color: (props: any) =>
+      chroma(props.color).luminance() <= 0.08
+        ? "rgba(255,255,255,0.8)"
+        : "rgba(0,0,0,0.6)",
     letterSpacing: "1px",
     textTransform: "uppercase",
     fontSize: "12px",

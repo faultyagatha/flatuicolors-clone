@@ -26,15 +26,19 @@ export const useStyles = makeStyles({
     }
   },
   goBack: {
-    fontSize: "18px",
+    fontSize: "16px",
     textTransform: "uppercase",
-    height: "50%",
-    marginLeft: "auto",
-    // display: "flex",
+    height: "70%",
+    display: "flex",
     alignItems: "center",
-    "& a": {
+    background: "#d7dee1",
+    border: "none",
+    outline: "none",
+    color: "gray",
+    "&:hover": {
       textDecoration: "none",
-      color: "gray",
+      cursor: "pointer",
+      color: "black",
     },
     [BREAKPOINTS.down("xs")]: {
       display: "none"

@@ -76,7 +76,7 @@ export const CreatePaletteNav = ({
           <Link to="/">
             <Button
               variant="contained"
-              color="secondary"
+              // color="secondary"
               className={classes.button}
             >
               Back
@@ -84,7 +84,7 @@ export const CreatePaletteNav = ({
           </Link>
           <Button
             variant="contained"
-            color="primary"
+            // color="primary"
             onClick={handleDialogOpen}
             className={classes.button}
           >

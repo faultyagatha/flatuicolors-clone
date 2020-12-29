@@ -32,7 +32,7 @@ export const PaletteList = ({ seedPalettes }: IPaletteList) => {
     <div className={classes.root} >
       <div className={classes.container}>
         <nav className={classes.nav}>
-          <h1 className={classes.title}>REACT COLORS</h1>
+          <h1 className={classes.title}>COLOURS</h1>
           <div className={classes.navBtns}>
             <Link to='/palette/new'><Button>CREATE NEW PALETTE</Button></Link>
             <Button onClick={handleRestoreDefaults}>RESTORE DEFAULTS</Button>

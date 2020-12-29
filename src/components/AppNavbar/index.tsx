@@ -5,7 +5,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import IconButton from '@material-ui/core/IconButton';
 import Snackbar from '@material-ui/core/Snackbar';
 import CloseIcon from '@material-ui/icons/Close';
-
+import Button from '@material-ui/core/Button';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 
@@ -55,12 +55,12 @@ export const Navbar = ({
             onAfterChange={handleLevelChange} />
         </div>
       </div>}
-      {isSingleColor && paletteId && <button
+      {isSingleColor && paletteId && <Button
         className={classes.goBack}
         onClick={() => handleGoBackClick(paletteId)}
       >
         Go Back
-      </button>}
+      </Button>}
       <div className={classes.selectContainer}>
         <Select value={format} onChange={handleFormatChange}>
           <MenuItem value="hex">HEX - #ffffff</MenuItem>
@@ -74,7 +74,6 @@ export const Navbar = ({
         autoHideDuration={3000}
         message={<span id="message-id">Format Changed to {format.toUpperCase()}</span>}
         ContentProps={{ "aria-describedby": "message-id" }}
-        // onClose={handleCloseSnackbar}
         action={[
           <IconButton
             onClick={handleCloseSnackbar}

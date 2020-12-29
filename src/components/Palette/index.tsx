@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import { ColourBox } from '../ColourBox';
-import { Navbar } from '../Navbar';
+import { Navbar } from '../AppNavbar';
 import { Footer } from '../Footer';
 import { IGeneratePalette } from '../../types';
 import { useStyles } from './useStyles';

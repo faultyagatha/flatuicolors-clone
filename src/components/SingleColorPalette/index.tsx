@@ -4,7 +4,7 @@ import { ISingleColorPalette } from '../../types';
 import { useStyles } from './useStyles';
 import { getShades } from '../../helpers';
 import { ColourBox } from '../ColourBox';
-import { Navbar } from '../Navbar';
+import { Navbar } from '../AppNavbar';
 import { Footer } from '../Footer';
 
 export const SingleColorPalette = ({ colorId, palette }: ISingleColorPalette) => {

@@ -23,6 +23,6 @@ export const useStyles = makeStyles({
   },
   colorNameText: {
     // width: "100% !important",
-    // alignItems: "center"
+    alignItems: "center"
   }
 });
