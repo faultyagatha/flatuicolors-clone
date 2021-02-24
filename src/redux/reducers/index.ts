@@ -66,7 +66,6 @@ function ui(
   switch (action.type) {
     case DRAWER_OPEN: {
       const { isDrawerOpen } = action.payload;
-      console.log({ ...state, isDrawerOpen });
       return { ...state, isDrawerOpen };
     }
     case DRAWER_CLOSE: {
@@ -91,7 +90,6 @@ function ui(
     }
     case SHOW_ALERT: {
       const { isAlert } = action.payload;
-      console.log('ACTION: ', isAlert);
       return { ...state, isAlert };
     }
     default:

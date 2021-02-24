@@ -19,7 +19,7 @@ store.subscribe(() => {
 const WithProvider = () => {
   return (
     <Provider store={store}>
-      <Router>
+      <Router basename={process.env.PUBLIC_URL}>
         <App />
       </Router>
     </Provider>
