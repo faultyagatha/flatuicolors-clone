@@ -1,12 +1,12 @@
 # Flatuicolors-clone
 
-A clone of flatuicolors.com app.
-
-Tech stack: **React, Redux, Material UI**.
-
 ![project-flatui-col1](./img/project-flatui-col1.png)
 
 ![project-flatui-col2](./img/project-flatui-col2.png)
+
+A clone of flatuicolors.com app.
+
+Tech stack: **React, Redux, Material UI**.
 
 In the project directory, you can run:
 
